@@ -9,10 +9,10 @@ public class ConnectionDB {
     private String username = "sa";
     private String password = "sa";
     private String driverName = "com.mysql.jdbc.Driver";
-    private String dbName = "qlsach";
+    private String dbName = "qlbanxehoi";
     
 
-    public Connection conn = null;
+    public Connection conn;
     public Statement stmt;
     public ResultSet rs;
 
@@ -24,11 +24,16 @@ public class ConnectionDB {
             Class.forName(driverName).newInstance();
             conn =	DriverManager.getConnection(url + dbName,username,password);
             if (!conn.isClosed()) {
-            	System.out.print("Kết nối db được !");
+            	System.out.print("Kết nối database thành công !");
             }
+            if (conn == null) System.out.println("Fail connect database");
+            stmt = conn.createStatement(ResultSet.TYPE_FORWARD_ONLY,ResultSet.CONCUR_READ_ONLY);
+           
+            rs = null;
+            
         } catch (Exception ex) {
             // handle the error
-        	System.out.print("Ko kết nối db được !");
+        	System.out.print("Ko kết nối database được !");
         }
     }
 
