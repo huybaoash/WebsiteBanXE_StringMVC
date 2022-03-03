@@ -35,4 +35,70 @@ public class Contract {
 		NGAYLAP	= nGAYLAP;
 		TRANGTHAI	= tRANGTHAI;
 	}
+
+	public int getMAHD() {
+		return MAHD;
+	}
+
+	public void setMAHD(int mAHD) {
+		MAHD = mAHD;
+	}
+
+	public int getMANGUOIBAN() {
+		return MANGUOIBAN;
+	}
+
+	public void setMANGUOIBAN(int mANGUOIBAN) {
+		MANGUOIBAN = mANGUOIBAN;
+	}
+
+	public int getMANGUOIMUA() {
+		return MANGUOIMUA;
+	}
+
+	public void setMANGUOIMUA(int mANGUOIMUA) {
+		MANGUOIMUA = mANGUOIMUA;
+	}
+
+	public int getMAXE() {
+		return MAXE;
+	}
+
+	public void setMAXE(int mAXE) {
+		MAXE = mAXE;
+	}
+
+	public String getNOIDUNGHD() {
+		return NOIDUNGHD;
+	}
+
+	public void setNOIDUNGHD(String nOIDUNGHD) {
+		NOIDUNGHD = nOIDUNGHD;
+	}
+
+	public String getTRANGTHAI() {
+		return TRANGTHAI;
+	}
+
+	public void setTRANGTHAI(String tRANGTHAI) {
+		TRANGTHAI = tRANGTHAI;
+	}
+
+	public double getGIA() {
+		return GIA;
+	}
+
+	public void setGIA(double gIA) {
+		GIA = gIA;
+	}
+
+	public LocalTime getNGAYLAP() {
+		return NGAYLAP;
+	}
+
+	public void setNGAYLAP(LocalTime nGAYLAP) {
+		NGAYLAP = nGAYLAP;
+	}
+	
+	
 }

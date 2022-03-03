@@ -27,6 +27,7 @@ public class AccountsDAO {
             acc.setMAKH(db.rs.getInt("MAKH"));
             acc.setMANV(db.rs.getInt("MANV"));
             acc.setMATK(db.rs.getInt("MATK"));
+            acc.setCHUCVU(db.rs.getString("CHUCVU"));
             
         }
         db.rs.close();
