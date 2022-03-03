@@ -2,6 +2,7 @@ package com.webbanxe.controller;
 
 import java.sql.SQLException;
 import java.time.LocalDateTime;
+import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,13 +11,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.webbanxe.model.AccountsDAO;
+import com.webbanxe.model.CarType;
+import com.webbanxe.model.CarTypeDAO;
 import com.webbanxe.model.HelloWorld;
 
 @Controller
 public class MyController {
 
     @RequestMapping(value = { "/", "/home" }, method = RequestMethod.GET)
-    public String homePage(Model model) {
+    public String homePage(Model model) throws ClassNotFoundException, SQLException {
+    	CarTypeDAO data_LoaiXE = new CarTypeDAO();
+    	List<CarType> lstLoaiXE = data_LoaiXE.toList();
+    	model.addAttribute("lstLoaiXE",lstLoaiXE);
+    	
         return "homePage";
     }
 

@@ -158,18 +158,7 @@
             background-size: 250px 200px;
             background-repeat: no-repeat;
         }
-        .img-dv {
-            background-image: url("/images/Get-Leads-and-Sales-with-Animated-Explainer-Video-Ads-on-Facebook-Featured-Image.jpg");
-        }
-        .img-vl {
-            background-image: url("/images/tong-hop-cac-cach-cai-thien-ky-nang-noi-chuyen.png");
-        }
-        .img-bds {
-            background-image: url("/images/thutucmuabannha01.jpg");
-        }
-        .img-sp {
-            background-image: url("/images/quy-trinh-ban-hang-truc-tiep.jpg");
-        }
+        
         .rowbtn-create {
             text-align: center;
             display: flex;
