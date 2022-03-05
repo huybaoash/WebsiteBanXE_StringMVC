@@ -1,6 +1,7 @@
 eclipse.preferences.version=1
 encoding//src/main/java/com/webbanxe/controller/HelloWorldController.java=UTF-8
 encoding//src/main/java/com/webbanxe/controller/IndexControllder.java=UTF-8
+encoding//src/main/java/com/webbanxe/controller/LoginController.java=UTF-8
 encoding//src/main/java/com/webbanxe/model/Account.java=UTF-8
 encoding//src/main/java/com/webbanxe/model/AccountsDAO.java=UTF-8
 encoding//src/main/java/com/webbanxe/model/CarConmpanyDAO.java=UTF-8
@@ -10,4 +11,5 @@ encoding//src/main/java/com/webbanxe/model/ContractDAO.java=UTF-8
 encoding//src/main/java/com/webbanxe/model/CustomerDAO.java=UTF-8
 encoding//src/main/webapp/WEB-INF/basefragments/_header.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/basefragments/_menu.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/bodyfragments/_home.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/layouts/classic.jsp=UTF-8

@@ -5,7 +5,7 @@ import java.time.LocalTime;
 
 public class Contract {
 	private int		MAHD,	MANGUOIBAN,		MANGUOIMUA,		MAXE;
-	private String	NOIDUNGHD,	TRANGTHAI;
+	private String	NOIDUNGHD,	TRANGTHAI,	DIADIEM;
 	private double GIA;
 	private LocalTime NGAYLAP;
 	
@@ -16,6 +16,7 @@ public class Contract {
 		MANGUOIMUA	 = -1;
 		MAXE	= -1;
 		NOIDUNGHD	= "";
+		DIADIEM = "";
 		GIA	= -1;
 		NGAYLAP	= LocalTime.now();
 		TRANGTHAI	= "Công khai";
@@ -23,7 +24,7 @@ public class Contract {
 	}
 	
 	public Contract( int		mAHD,int	mANGUOIBAN,int		mANGUOIMUA,int		mAXE,
-	String	nOIDUNGHD,String	tRANGTHAI,
+	String	nOIDUNGHD,String	tRANGTHAI, String dIADIEM,
 	double gIA,
 	LocalTime nGAYLAP) {
 		MAHD = mAHD;	
@@ -34,6 +35,7 @@ public class Contract {
 		GIA	= gIA;
 		NGAYLAP	= nGAYLAP;
 		TRANGTHAI	= tRANGTHAI;
+		DIADIEM = dIADIEM;
 	}
 
 	public int getMAHD() {
@@ -74,6 +76,16 @@ public class Contract {
 
 	public void setNOIDUNGHD(String nOIDUNGHD) {
 		NOIDUNGHD = nOIDUNGHD;
+	}
+	
+	
+
+	public String getDIADIEM() {
+		return DIADIEM;
+	}
+
+	public void setDIADIEM(String dIADIEM) {
+		DIADIEM = dIADIEM;
 	}
 
 	public String getTRANGTHAI() {

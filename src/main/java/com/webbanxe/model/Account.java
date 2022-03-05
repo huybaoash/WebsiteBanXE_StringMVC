@@ -2,13 +2,12 @@ package com.webbanxe.model;
 import java.io.Serializable;
 
 public class Account implements Serializable {
-	private int MATK, MAKH,MANV;
+	private int MATK, MAKH;
 	private String TENTK,	MATKHAU,	HINHANH,	TRANGTHAI,	CHUCVU;
 	
 	public Account() {
 		MATK = -1;
 		MAKH = -1;
-		MANV = -1;
 		TENTK = "";
 		MATKHAU = "";
 		HINHANH = "";
@@ -19,7 +18,6 @@ public class Account implements Serializable {
 	public Account(int mATK, int mAKH,int mANV ,String tENtk, String mATKHAU,String hINHANH,String tRANGTHAI,String cHUCVU) {
 		MATK = mATK;
 		MAKH = mAKH;
-		MANV = mANV;
 		TENTK = tENtk;
 		MATKHAU = mATKHAU;
 		HINHANH = hINHANH;
@@ -40,12 +38,6 @@ public class Account implements Serializable {
 		MAKH = mAKH;
 	}
 	
-	public int getMANV() {
-		return MANV;
-	}
-	public void setMANV(int mANV) {
-		MANV = mANV;
-	}
 	
 	public String getTENTK() {
 		return TENTK;

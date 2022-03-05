@@ -15,14 +15,58 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <style>
-        .inputSearch {
-            outline: none;
-            padding: 9px;
-            border-radius: 5px !important;
-            padding-left: 10px;
-            border: 0.7px solid #808080;
-            width: 56%;
+        .search-form .form-group {
+            float: right !important;
+            transition: all 0.35s, border-radius 0s;
+            width: 32px;
+            height: 32px;
+            background-color: #fff;
+            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+            border-radius: 25px;
+            border: 1px solid #ccc;
         }
+        .search-form .form-group input.form-control {
+            padding-right: 20px;
+            border: 0 none;
+            background: transparent;
+            box-shadow: none;
+            display: block;
+        }
+        .search-form .form-group input.form-control::-webkit-input-placeholder {
+            display: none;
+        }
+        .search-form .form-group input.form-control:-moz-placeholder {
+            /* Firefox 18- */
+            display: none;
+        }
+        .search-form .form-group input.form-control::-moz-placeholder {
+            /* Firefox 19+ */
+            display: none;
+        }
+        .search-form .form-group input.form-control:-ms-input-placeholder {
+            display: none;
+        }
+        .search-form .form-group:hover,
+        .search-form .form-group.hover {
+            width: 50%;
+            border-radius: 4px 25px 25px 4px;
+        }
+        .search-form .form-group span.form-control-feedback {
+            position: absolute;
+            top: -1px;
+            right: -2px;
+            z-index: 2;
+            display: block;
+            width: 34px;
+            width: 34px;
+            height: 34px;
+            line-height: 34px;
+            text-align: center;
+            color: #3596e0;
+            left: initial;
+            font-size: 14px;
+        }
+        
        .response1, .response2, .response3, .response0, .response4, .response5 {
             display: none;
         }

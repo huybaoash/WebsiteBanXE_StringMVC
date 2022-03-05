@@ -37,6 +37,113 @@
        <put-attribute name="title" value="Index" />  
        <put-attribute name="body" value="/WEB-INF/bodyfragments/_index.jsp" />  
    </definition>
+   
+   <!-- Ds tài khoản -->
+   <definition name="accountlist" extends="base.definition">  
+       <put-attribute name="title" value="accountlist" />  
+       <put-attribute name="body" value="/WEB-INF/bodyfragments/_accountlist.jsp" />  
+   </definition>
 
+   <!-- Sửa hãng sx -->
+   <definition name="carconmpanyedit" extends="base.definition">  
+       <put-attribute name="title" value="carconmpanyedit" />  
+       <put-attribute name="body" value="/WEB-INF/bodyfragments/_carconmpanyedit.jsp" />  
+   </definition>
+   
+   <!-- DS hãng sx -->
+   <definition name="carconmpanylist" extends="base.definition">  
+       <put-attribute name="title" value="carconmpanylist" />  
+       <put-attribute name="body" value="/WEB-INF/bodyfragments/_carconmpanylist.jsp" />  
+   </definition>
+      
+   <!-- Thêm hãng sx -->
+   <definition name="carconmpanyregister" extends="base.definition">  
+       <put-attribute name="title" value="carconmpanyregister" />  
+       <put-attribute name="body" value="/WEB-INF/bodyfragments/_carconmpanyregister.jsp" />  
+   </definition>
+   
+   <!-- Chỉnh sửa thông tin xe đăng ký -->
+   <definition name="caredit" extends="base.definition">  
+       <put-attribute name="title" value="caredit" />  
+       <put-attribute name="body" value="/WEB-INF/bodyfragments/_caredit.jsp" />  
+   </definition>
+   
+    <!-- Chỉnh sửa thông tin loại xe -->
+   <definition name="cartypeedit" extends="base.definition">  
+       <put-attribute name="title" value="cartypeedit" />  
+       <put-attribute name="body" value="/WEB-INF/bodyfragments/_cartypeedit.jsp" />  
+   </definition>
+   
+   <!-- DS loại xe -->
+   <definition name="cartypelist" extends="base.definition">  
+       <put-attribute name="title" value="cartypelist" />  
+       <put-attribute name="body" value="/WEB-INF/bodyfragments/_cartypelist.jsp" />  
+   </definition>
+   
+	<!-- Thêm loại xe -->
+   <definition name="cartyperegister" extends="base.definition">  
+       <put-attribute name="title" value="cartyperegister" />  
+       <put-attribute name="body" value="/WEB-INF/bodyfragments/_cartyperegister.jsp" />  
+   </definition>
+   
+   <!-- Chi tiết hợp đồng -->
+   <definition name="contractdetails" extends="base.definition">  
+       <put-attribute name="title" value="contractdetails" />  
+       <put-attribute name="body" value="/WEB-INF/bodyfragments/_contractdetails.jsp" />  
+   </definition>
+   
+      <!-- Chỉnh sửa hợp đồng -->
+   <definition name="contractedit" extends="base.definition">  
+       <put-attribute name="title" value="contractedit" />  
+       <put-attribute name="body" value="/WEB-INF/bodyfragments/_contractedit.jsp" />  
+   </definition>
+   
+      <!-- Lịch sử hợp đồng -->
+   <definition name="contracthistory" extends="base.definition">  
+       <put-attribute name="title" value="contracthistory" />  
+       <put-attribute name="body" value="/WEB-INF/bodyfragments/_contracthistory.jsp" />  
+   </definition>
+      
+      <!-- Ds hợp đồng -->
+   <definition name="contractlist" extends="base.definition">  
+       <put-attribute name="title" value="contractlist" />  
+       <put-attribute name="body" value="/WEB-INF/bodyfragments/_contractlist.jsp" />  
+   </definition>
+   
+     <!-- Đăng ký hợp đồng -->
+   <definition name="contractregister" extends="base.definition">  
+       <put-attribute name="title" value="contractregister" />  
+       <put-attribute name="body" value="/WEB-INF/bodyfragments/_contractregister.jsp" />  
+   </definition>
+   
+    <!-- Đăng nhập -->
+   <definition name="login" extends="base.definition">  
+       <put-attribute name="title" value="login" />  
+       <put-attribute name="body" value="/WEB-INF/bodyfragments/_login.jsp" />  
+   </definition>
+   
+   <!-- Đăng ký -->
+   <definition name="register" extends="base.definition">  
+       <put-attribute name="title" value="register" />  
+       <put-attribute name="body" value="/WEB-INF/bodyfragments/_register.jsp" />  
+   </definition>
+   
+      <!-- Trang cá nhân -->
+   <definition name="userinfo" extends="base.definition">  
+       <put-attribute name="title" value="userinfo" />  
+       <put-attribute name="body" value="/WEB-INF/bodyfragments/_userinfo.jsp" />  
+   </definition>
+   
+         <!-- Chỉnh sửa thông tin cá nhân -->
+   <definition name="userinfoedit" extends="base.definition">  
+       <put-attribute name="title" value="userinfoedit" />  
+       <put-attribute name="body" value="/WEB-INF/bodyfragments/_userinfoedit.jsp" />  
+   </definition>
+   
+            <!-- Ds khách hàng -->
+   <definition name="customerlist" extends="base.definition">  
+       <put-attribute name="title" value="customerlist" />  
+       <put-attribute name="body" value="/WEB-INF/bodyfragments/_customerlist.jsp" />  
+   </definition>
 
 </tiles-definitions>

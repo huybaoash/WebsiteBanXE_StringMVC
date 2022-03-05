@@ -5,14 +5,25 @@
         <p>Resize the browser window to see the effect.</p>
         <p>The columns will automatically stack on top of each other when the screen is less than 768px wide.</p> -->
         <div class="row" style="background-color:#f8eae2">
-            <div class="col-sm-1"></div>
-            <div class="col-sm-4" style="margin-top:12px;padding-left:200px">
+            
+            <div class="col-sm-4" style="margin-top:0px">
                 <a href="">
-                    <img src="~/images/logo6060.png" alt="" style="height:50px; width:120px;" />
+                    <img src="~/images/logo6060.png" alt="" style="height:20px; width:120px;" />
                 </a>
             </div>
+            
+       		<div class="col-sm-4">
+                <form action="" class="search-form">
+                    <div class="form-group has-feedback">
+                        <label for="search" class="sr-only">Search</label>
+                        <input type="text" class="form-control" name="search" id="search" placeholder="search">
+                        <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                    </div>
+                </form>
+            </div>
+         
 
-            <div class="col-sm-7">
+            <!-- <div class="col-sm-4">
                 
                 <div style="margin-top:20px;text-align:center;padding-left:30%">
                     <a style="color:white;text-decoration:none" href="">
@@ -22,7 +33,7 @@
                   
                 </div>
 
-            </div>
+            </div> -->
 
         </div>
 
@@ -32,21 +43,19 @@
     <div class="menu">
         <ul>
 
-            <li style="font-weight:bold"><a class="fas fa-hotel">TRANG CHỦ</a></li>
-            <li style="font-weight:bold"><a class="fas fa-hammer"> Sản phẩm</a></li>
-            <li style="font-weight:bold"><a class="fab fa-servicestack"> Dịch vụ"</a></li>
-            <li style="font-weight:bold"><a><i class="fas fa-dice-d20"></i>Việc làm</a></li>
-
-			<li style="font-weight:bold"><a href="${pageContext.request.contextPath}/">Home</a></li>
-       		<li style="font-weight:bold"><a href="${pageContext.request.contextPath}/contactus">Contact Us</a></li>
-       		<li style="font-weight:bold"><a href="${pageContext.request.contextPath}/index">Index</a></li>
-       		<li style="font-weight:bold"><a href="${pageContext.request.contextPath}/helloworld">Hello World !</a></li>
+            <li style="font-weight:bold"><a class="fas fa-hotel" href="${pageContext.request.contextPath}/">TRANG CHỦ</a></li>
+       		<li style="font-weight:bold"><a href="${pageContext.request.contextPath}/carconmpany-list">Hãng sản xuất</a></li>
+       		<li style="font-weight:bold"><a href="${pageContext.request.contextPath}/contract-list">Năm sản xuất</a></li>
+       		<li style="font-weight:bold"><a href="${pageContext.request.contextPath}/contract-register">Đăng ký bán xe</a></li>
+       		
        		
         </ul>
         <ul>
-            <li><a>Giới thiệu</a></li>
-            <li><a>Góp ý</a></li>
+            <li><a class = "fas fa-user-circle" href = "${pageContext.request.contextPath}/login">Đăng nhập</a></li>
+        	
+        	<li><a class = "fas fa-user-plus" href = "${pageContext.request.contextPath}/register">Đăng ký</a></li>
             
         </ul>
+        
     </div>
     
