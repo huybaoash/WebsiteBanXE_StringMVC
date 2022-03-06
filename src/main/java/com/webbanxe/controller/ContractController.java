@@ -18,37 +18,37 @@ import com.webbanxe.model.HelloWorld;
 @Controller
 public class ContractController {
 	@RequestMapping(value = { "/car-edit" }, method = RequestMethod.GET)
-    public String careditPage(Model model) {
+    public String careditPage(Model model,HttpServletRequest request) {
 
         return "caredit";
     }
 	
 	@RequestMapping(value = { "/contract-details" }, method = RequestMethod.GET)
-    public String contractdetailsPage(Model model) {
+    public String contractdetailsPage(Model model,HttpServletRequest request) {
 
         return "contractdetails";
     }
 	
 	@RequestMapping(value = { "/contract-edit" }, method = RequestMethod.GET)
-    public String contracteditPage(Model model) {
+    public String contracteditPage(Model model,HttpServletRequest request) {
 
         return "contractedit";
     }
 	
 	@RequestMapping(value = { "/contract-history" }, method = RequestMethod.GET)
-    public String contracthistoryPage(Model model) {
+    public String contracthistoryPage(Model model , HttpServletRequest request) {
 
         return "contracthistory";
     }
 	
 	@RequestMapping(value = { "/contract-register" }, method = RequestMethod.GET)
-    public String contractregisterPage(Model model) {
+    public String contractregisterPage(Model model , HttpServletRequest request) {
 
         return "contractregister";
     }
 	
 	@RequestMapping(value = { "/contract-list" }, method = RequestMethod.GET)
-    public String contractlistPage(Model model) {
+    public String contractlistPage(Model model , HttpServletRequest request) {
 
         return "contractlist";
     }

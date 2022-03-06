@@ -18,7 +18,7 @@ import com.webbanxe.model.HelloWorld;
 @Controller
 public class CustomerController {
 	@RequestMapping(value = { "/customer-list" }, method = RequestMethod.GET)
-    public String customerlistPage(Model model) {
+    public String customerlistPage(Model model , HttpServletRequest request) {
 
         return "customerlist";
     }

@@ -16,12 +16,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.webbanxe.model.Account;
 import com.webbanxe.model.AccountsDAO;
+import com.webbanxe.model.Customer;
+import com.webbanxe.model.CustomerDAO;
 import com.webbanxe.model.HelloWorld;
 import com.webbanxe.model.Login;
 @Controller
 public class LoginController {
 	
 	public static Account Account_present = null; 
+	public static Customer Customer_present = null; 
 	
 	@RequestMapping(value = { "/login" }, method = RequestMethod.GET)
     public String customerlistPage(Model model) throws ClassNotFoundException, SQLException {
@@ -50,22 +53,41 @@ public class LoginController {
 				Account_present = account;
 	
 				model.addAttribute("Account_present",Account_present);
+				
+				break;
+				
+				
+			}
+		}
+		
+		CustomerDAO dataCustomerDAO = new CustomerDAO();
+		List<Customer> lstCustomers = dataCustomerDAO.toList();
+		
+		for (Customer customer_present : lstCustomers) {
+			if (Account_present.getMAKH() == customer_present.getMAKH() ) {
+				
+				Customer_present = customer_present;
+				model.addAttribute("Customer_present",customer_present);
 				MyController myController = new MyController();
 				return myController.homePage(model);
 			}
 		}
 		
-		model.addAttribute("message_account","Sai tên đăng nhập hoặc tài khoản !");
+		
+		model.addAttribute("message_account","Sai tên đăng nhập hoặc mật khẩu !");
         return "login";
     }
 	
 	@RequestMapping(value = { "/sign-out" }, method = RequestMethod.GET)
     public String signoutGETPage(Model model ,HttpServletRequest request) throws ClassNotFoundException, SQLException {
 		Account_present = null;
+		Customer_present = null;
 		HttpSession session = request.getSession();
 		session.removeAttribute("Account_present");
+		session.removeAttribute("Customer_present");
 		model.addAttribute("Account_present",Account_present);
-       
+		model.addAttribute("Customer_present",Customer_present);
+		
 		MyController myController = new MyController();
 		return myController.homePage(model);
     }
@@ -73,10 +95,12 @@ public class LoginController {
 	@RequestMapping(value = { "/sign-out" }, method = RequestMethod.POST)
     public String signoutPOSTPage(Model model,HttpServletRequest request) throws ClassNotFoundException, SQLException {
 		Account_present = null;
-		
+		Customer_present = null;
 		HttpSession session = request.getSession();
 		session.removeAttribute("Account_present");
+		session.removeAttribute("Customer_present");
 		model.addAttribute("Account_present",Account_present);
+		model.addAttribute("Customer_present",Customer_present);
 		
 		
 		MyController myController = new MyController();

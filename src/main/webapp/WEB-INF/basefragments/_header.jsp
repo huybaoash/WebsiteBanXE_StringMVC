@@ -2,6 +2,7 @@
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <c:set var="version" value="1.0.0" scope="session" />
 <c:set var="Account_present" value="${Account_present}" scope="session" />
+<c:set var="Customer_present" value="${Customer_present}" scope="session" />
 
 <div class="container-fluid">
         <!-- <h1>Hello World!</h1>
@@ -64,7 +65,7 @@
 	    </c:when>    
 	    <c:otherwise>
 	        <ul>
-            <li><a href ="">Xin chào ${Account_present.getTENTK()}</a></li>
+            <li><a href ="${pageContext.request.contextPath}/userinfo">Xin chào ${Account_present.getTENTK()}</a></li>
  			<li><a href ="http://localhost:8080/WebBanXE/sign-out">Thoát</a></li>
         	</ul>
 	    </c:otherwise>

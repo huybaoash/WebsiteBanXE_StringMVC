@@ -115,6 +115,21 @@ public class RegisterController {
 		data_AccountsDAO.add(account);
 		
 		model.addAttribute("Account_present",account);
+		
+		CustomerDAO dataCustomerDAO = new CustomerDAO();
+		List<Customer> lstCustomers = dataCustomerDAO.toList();
+		
+		for (Customer customer_present : lstCustomers) {
+			if (account.getMAKH() == customer_present.getMAKH() ) {
+				
+				
+				model.addAttribute("Customer_present",customer_present);
+				MyController myController = new MyController();
+				return myController.homePage(model);
+			}
+		}
+		
+		
 		MyController myController = new MyController();
 		return myController.homePage(model);
     }
