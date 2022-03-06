@@ -125,18 +125,19 @@
 </style>
 
 
-<form action = "helloworld.htm" method="post">
+
     <div class="containerLG">
         <header class="Nameform">ĐĂNG NHẬP</header>
-        <form>
+        <form action = "login.htm" method="post">
             <div class="input-field">
-                <!-- @Html.ValidationSummary(true, "", new { @class = "text-danger", style = "margin-left:0px" }) -->
-                <label for="Email">Tên đăng nhập</label>
-                <input type = "text" class = "form-control" placeholder = "Email"/>
+                  
+                <label for="AccountValidation" class = "text-danger" style = "margin-left:0px" >${message_account}</label>
+                <label for="UserName">Tên đăng nhập</label>
+                <input type = "text" class = "form-control" placeholder = "UserName" id = "UserName" name = "UserName"/>
                             </div>
             <div class="input-field">
                 <label for="pwd">Mật khẩu</label>
-                <input type = "password" class = "form-control" placeholder = "Password"/>
+                <input type = "password" class = "form-control" placeholder = "Password" id = "Password" name = "Password"/>
                            </div>
 
             <div class="Remember-lg">
@@ -153,7 +154,7 @@
 
         </form>
 		
-		<form action = "helloworld.htm" method="post">
+		<form action = "login.htm" method="post">
         <div class="auth">
             <h4>Đăng nhập với</h4>
         </div>
@@ -170,4 +171,3 @@
             Không phải thành viên? <a href="">Đăng ký ngay</a>
         </div>
     </div>
-</form>

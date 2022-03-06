@@ -1,5 +1,8 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" language="java" %>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+<c:set var="version" value="1.0.0" scope="session" />
+<c:set var="Account_present" value="${Account_present}" scope="session" />
+
 <div class="container-fluid">
         <!-- <h1>Hello World!</h1>
         <p>Resize the browser window to see the effect.</p>
@@ -22,7 +25,7 @@
                 </form>
             </div>
          
-
+			
             <!-- <div class="col-sm-4">
                 
                 <div style="margin-top:20px;text-align:center;padding-left:30%">
@@ -50,12 +53,23 @@
        		
        		
         </ul>
-        <ul>
+        <c:choose>
+    <c:when test="${Account_present == null}">
+	        <ul>
             <li><a class = "fas fa-user-circle" href = "${pageContext.request.contextPath}/login">Đăng nhập</a></li>
         	
         	<li><a class = "fas fa-user-plus" href = "${pageContext.request.contextPath}/register">Đăng ký</a></li>
             
         </ul>
+	    </c:when>    
+	    <c:otherwise>
+	        <ul>
+            <li><a href ="">Xin chào ${Account_present.getTENTK()}</a></li>
+ 			<li><a href ="http://localhost:8080/WebBanXE/sign-out">Thoát</a></li>
+        	</ul>
+	    </c:otherwise>
+	</c:choose>
+        
         
     </div>
     
