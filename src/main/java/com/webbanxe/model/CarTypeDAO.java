@@ -54,11 +54,13 @@ public ConnectionDB db;
 		carTypeList = this.toList();
 		carTypeList.add(carcomp);
 		
-		String sql = "INSERT INTO hangsanxuat (`MALOAIXE`, `TENLOAIXE`, `HINHANH`, `TRANGTHAI`) VALUES (NULL, '?', '?', 'Công khai')";
+		String sql = "INSERT INTO hangsanxuat (`TENLOAIXE`, `HINHANH`, `TRANGTHAI`) VALUES (?, ?, ?)";
 		PreparedStatement stmt = db.conn.prepareStatement(sql);
 
         stmt.setString(1, carcomp.getTENLOAIXE());
         stmt.setString(2, carcomp.getHINHANH());
+        stmt.setString(3, carcomp.getTRANGTHAI());
+        
         
 		stmt.execute();
 		stmt.close();
@@ -90,7 +92,7 @@ public ConnectionDB db;
 					carTypeList.get(i).setTRANGTHAI(carcomp.getTRANGTHAI());
 					
 					
-					String sql = "UPDATE `loaixe` SET `TENLOAIXE` = '?', `HINHANH` = '?', `TRANGTHAI` = '?' WHERE `loaixe`.`MALOAIXE` = ?";
+					String sql = "UPDATE `loaixe` SET `TENLOAIXE` = ?, `HINHANH` = ?, `TRANGTHAI` = ? WHERE `loaixe`.`MALOAIXE` = ?";
 					PreparedStatement stmt = db.conn.prepareStatement(sql);
 			        stmt.setString(1, carcomp.getTENLOAIXE());
 			        stmt.setString(2, carcomp.getHINHANH());

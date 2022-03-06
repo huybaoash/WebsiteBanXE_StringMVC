@@ -65,8 +65,8 @@ public class ContractDAO {
 		contractList = this.toList();
 		contractList.add(contract);
 		
-		String sql = "INSERT INTO `hopdong` (`MAHD`, `MANGUOIBAN`, `MANGUOIMUA`, `MAXE`, `NOIDUNGHD`, `GIA`, `NGAYLAP`, `TRANGTHAI`, `DIADIEM`) "
-				+ "VALUES (NULL, '?', '?', '?', '?', '?', '?', '?', '?')";
+		String sql = "INSERT INTO `hopdong` (`MANGUOIBAN`, `MANGUOIMUA`, `MAXE`, `NOIDUNGHD`, `GIA`, `NGAYLAP`, `TRANGTHAI`, `DIADIEM`) "
+				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 		PreparedStatement stmt = db.conn.prepareStatement(sql);
 
         stmt.setInt(1, contract.getMANGUOIBAN());
@@ -118,7 +118,7 @@ public class ContractDAO {
 
 					
 					
-					String sql = "UPDATE `hopdong` SET `MANGUOIBAN` = '?', `MANGUOIMUA` = '?', `MAXE` = '?', `NOIDUNGHD` = '?', `GIA` = '?', `NGAYLAP` = '?', `TRANGTHAI` = '?', `DIADIEM` = '?' WHERE `hopdong`.`MAHD` = ?";
+					String sql = "UPDATE `hopdong` SET `MANGUOIBAN` = ?, `MANGUOIMUA` = ?, `MAXE` = ?, `NOIDUNGHD` = ?, `GIA` = ?, `NGAYLAP` = ?, `TRANGTHAI` = ?, `DIADIEM` = ? WHERE `hopdong`.`MAHD` = ?";
 					PreparedStatement stmt = db.conn.prepareStatement(sql);
 					stmt.setInt(1, contract.getMANGUOIBAN());
 			        stmt.setInt(2, contract.getMANGUOIMUA());

@@ -8,7 +8,7 @@ public class CarType {
 		MALOAIXE = -1;
 		TENLOAIXE = "";
 		HINHANH = "";
-		TRANGTHAI = "Công khai";
+		TRANGTHAI = "CÃ´ng khai";
 	}
 	
 	public CarType(int mALOAIXE,String tENLOAIXE,String hINHANH, String tRANGTHAI) {

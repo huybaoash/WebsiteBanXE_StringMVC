@@ -65,7 +65,7 @@ public class Account implements Serializable {
 	}
 	
 	public String getCHUCVU() {
-		return TRANGTHAI;
+		return CHUCVU;
 	}
 	public void setCHUCVU(String cHUCVU) {
 		CHUCVU = cHUCVU;

@@ -66,8 +66,8 @@ public class CarDAO {
 		carList = this.toList();
 		carList.add(car);
 		
-		String sql = "INSERT INTO `xe` (`MAXE`, `TENXE`, `NOIDUNGXE`, `HINHANH`, `BAOHANH`, `GIA`, `NAMSANXUAT`, `MALOAIXE`, `MAHSX`, `TRANGTHAI`) "
-				+ "VALUES (NULL, '?', '?', '?', '?', '?', '?', '?', '?', 'Công khai')";
+		String sql = "INSERT INTO `xe` (`TENXE`, `NOIDUNGXE`, `HINHANH`, `BAOHANH`, `GIA`, `NAMSANXUAT`, `MALOAIXE`, `MAHSX`, `TRANGTHAI`) "
+				+ "VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		PreparedStatement stmt = db.conn.prepareStatement(sql);
 
         stmt.setString(1, car.getTENXE());
@@ -78,6 +78,7 @@ public class CarDAO {
         stmt.setInt(6, car.getNAMSANXUAT());
         stmt.setInt(7, car.getMALOAIXE());
         stmt.setInt(8, car.getMAHSX());
+        stmt.setString(9, car.getTRANGTHAI());
 		stmt.execute();
 		stmt.close();
 		System.out.println("Thêm thành công");
@@ -119,7 +120,7 @@ public class CarDAO {
 					carList.get(i).setMAHSX(car.getMAHSX());
 					
 					
-					String sql = "UPDATE `xe` SET `TENXE` = '?', `NOIDUNGXE` = '?', `HINHANH` = '?', `BAOHANH` = '?', `GIA` = '?', `NAMSANXUAT` = '?', `MALOAIXE` = '?', `MAHSX` = '?', `TRANGTHAI` = '?' WHERE `xe`.`MAXE` = ?";
+					String sql = "UPDATE `xe` SET `TENXE` = ?, `NOIDUNGXE` = ?, `HINHANH` = ?, `BAOHANH` = ?, `GIA` = ?, `NAMSANXUAT` = ?, `MALOAIXE` = ?, `MAHSX` = ?, `TRANGTHAI` = ? WHERE `xe`.`MAXE` = ?";
 					PreparedStatement stmt = db.conn.prepareStatement(sql);
 					stmt.setString(1, car.getTENXE());
 			        stmt.setString(2, car.getNOIDUNGXE());

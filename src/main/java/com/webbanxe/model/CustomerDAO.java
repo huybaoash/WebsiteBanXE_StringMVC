@@ -33,13 +33,33 @@ public class CustomerDAO {
         return Customer;
 	}
 	
+	public Customer getCustomerByCMND(String CMND) throws ClassNotFoundException,SQLException {
+		this.ConnectionDB();
+		Customer Customer = new Customer();
+		String sql = "SELECT * FROM khachhang WHERE CMND = '" + CMND + "'";
+		db.rs = db.stmt.executeQuery(sql);
+		if(db.rs.next()){
+            Customer = new Customer();
+            Customer.setMAKH(db.rs.getInt("MAKH"));
+            Customer.setTENKH(db.rs.getString("TENKH"));
+            Customer.setSDT(db.rs.getString("SDT"));
+            Customer.setEMAIL(db.rs.getString("EMAIL"));
+            Customer.setGIOITINH(db.rs.getString("GIOITINH"));
+            Customer.setDIACHI(db.rs.getString("DIACHI"));
+            Customer.setCMND(db.rs.getString("CMND"));
+            
+        }
+        db.rs.close();
+        return Customer;
+	}
+	
 	
 	public List<Customer> toList() throws SQLException, ClassNotFoundException {
 		this.ConnectionDB();
         List<Customer> customerList = new ArrayList<>();
         
         
-        db.rs = db.stmt.executeQuery("SELECT * FROM taikhoan");
+        db.rs = db.stmt.executeQuery("SELECT * FROM khachhang");
 		while(db.rs.next()){
             Customer Customer = new Customer();
             Customer.setMAKH(db.rs.getInt("MAKH"));
@@ -62,10 +82,9 @@ public class CustomerDAO {
 		customerList = this.toList();
 		customerList.add(customer);
 		
-		String sql = "INSERT INTO `khachhang` (`MAKH`, `TENKH`, `SDT`, `EMAIL`, `GIOITINH`, `DIACHI`, `CMND`) "
-				+ "VALUES (NULL, '?', '?', '?', '?', '?', '?')";
+		String sql = "INSERT INTO `khachhang` (`TENKH`, `SDT`, `EMAIL`, `GIOITINH`, `DIACHI`, `CMND`) "
+				+ "VALUES (?, ?, ?, ?, ?, ?)";
 		PreparedStatement stmt = db.conn.prepareStatement(sql);
-
 
         stmt.setString(1, customer.getTENKH());
         stmt.setString(2, customer.getSDT());
@@ -112,7 +131,7 @@ public class CustomerDAO {
 
 					
 					
-					String sql = "UPDATE `khachhang` SET `TENKH` = '?', `SDT` = '?', `EMAIL` = '?', `GIOITINH` = '?', `DIACHI` = '?', `CMND` = '?' WHERE `khachhang`.`MAKH` = ?";
+					String sql = "UPDATE `khachhang` SET `TENKH` = ?, `SDT` = ?, `EMAIL` = ?, `GIOITINH` = ?, `DIACHI` = ?, `CMND` = ? WHERE `khachhang`.`MAKH` = ?";
 					PreparedStatement stmt = db.conn.prepareStatement(sql);
 					stmt.setString(1, customer.getTENKH());
 			        stmt.setString(2, customer.getSDT());

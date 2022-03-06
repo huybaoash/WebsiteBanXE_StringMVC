@@ -53,7 +53,7 @@
        		
        		
         </ul>
-        <c:choose>
+    <c:choose>
     <c:when test="${Account_present == null}">
 	        <ul>
             <li><a class = "fas fa-user-circle" href = "${pageContext.request.contextPath}/login">Đăng nhập</a></li>

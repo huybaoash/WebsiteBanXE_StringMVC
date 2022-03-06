@@ -8,7 +8,7 @@ public class CarConmpany {
 		MAHSX = -1;
 		TENHSX = "";
 		HINHANH = "";
-		TRANGTHAI = "Công khai";
+		TRANGTHAI = "CÃ´ng khai";
 	}
 	
 	public CarConmpany(int mAHSX,String tENHSX,String hINHANH, String tRANGTHAI) {

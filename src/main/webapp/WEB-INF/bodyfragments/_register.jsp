@@ -38,10 +38,24 @@
         float: none;
     }
 </style>
-<form action = "helloworld.htm" method="post" class = "form-horizontal" role = "form">
+<form action = "register.htm" method="post" class = "form-horizontal" role = "form">
 
     <h2>Tạo tài khoản.</h2>
     <hr />
+    <c:choose>
+    	<c:when test="${message_validation != null}">
+	        <c:forEach var = "i" begin = "0" end = "${message_validation.size()-1}">
+	     		<label for="Validation" class="text-danger" style="margin-left:0px">${message_validation.get(i)}</label>
+                 <br />     
+			</c:forEach>
+	    </c:when>    
+	    <c:otherwise>
+	        
+	    </c:otherwise>
+	</c:choose>
+    
+	<hr />
+    
     <div class="form-group">
         <div class="col-md-10">
             <label for="UserName">Tên tài khoản(*)</label>
@@ -78,7 +92,7 @@
     <div class="form-group">
          <div class="col-md-10">
             <label for="HomeAdress">Địa chỉ(*)</label>
-            <input for="HomeAdress"  id = "HomeAdress" name ="FullName" class = "form-control" > </input>
+            <input for="HomeAdress"  id = "HomeAdress" name ="HomeAdress" class = "form-control" > </input>
         </div>
     </div>
 
@@ -125,40 +139,5 @@
     </div>
 </form>
 
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>  
-<script type="text/javascript">
-    $("#register").click(function () {
-        var a = '';
-        if ($('#PhoneNumber').val() == '') {
-            a = a + 'Tên ko dc trống\n'
-        }
-        if ($('#FullName').val() == '') {
-            a = a + 'Tên ko dc trống\n'
-        }
-        if ($('#Email').val() == '') {
-            a = a + 'Tên ko dc trống\n'
-        }
-        if ($('#Password').val() == '') {
-            a = a + 'Tên ko dc trống\n'
-        }
-        if ($('#ConfirmPassword').val() == '') {
-            a = a + 'Tên ko dc trống\n'
-        }
-        if ($('#CMND').val() == '') {
-            a = a + 'Tên ko dc trống\n'
-        }
-        if ($('#HomeAdress').val() == '') {
-            a = a + 'Tên ko dc trống\n'
-        }
-        if ($('#UserName').val() == '') {
-            a = a + 'Tên ko dc trống\n'
-        }
-        if (a == '') swal("Đăng ký thành công!", "", "success");
-        else swal("Bạn nhập thiếu thông tin!", "", "warning", {
-            buttons: [null, true],
-        })
-        
-        // cầm cài này qua mấy cái button khóa tài khoản
-        
-    });
-</script>
+
+

@@ -61,14 +61,16 @@ public class AccountsDAO {
 		accountList = this.toList();
 		accountList.add(acc);
 		
-		String sql = "INSERT INTO taikhoan (`MATK`, `MAKH`, `TENTK`, `MATKHAU`, `HINHANH`, `CHUCVU`, `TRANGTHAI`) "
-				+ "VALUES (NULL, ?, ?, ?, ?, ?, 'Người dùng', 'Công khai')";
+		String sql = "INSERT INTO taikhoan (`MAKH`, `TENTK`, `MATKHAU`, `HINHANH`, `CHUCVU`, `TRANGTHAI`) "
+				+ "VALUES (?, ?, ?, ?, ?, ?)";
 		PreparedStatement stmt = db.conn.prepareStatement(sql);
-
-        stmt.setInt(1, acc.getMAKH());
+		stmt.setInt(1, acc.getMAKH());
         stmt.setString(2, acc.getTENTK());
         stmt.setString(3, acc.getMATKHAU());
         stmt.setString(4, acc.getHINHANH());
+        stmt.setString(5, acc.getCHUCVU());
+        stmt.setString(6, acc.getTRANGTHAI());
+        
 		stmt.execute();
 		stmt.close();
 		System.out.println("Thêm thành công");
@@ -105,7 +107,7 @@ public class AccountsDAO {
 					accountList.get(i).setCHUCVU(acc.getCHUCVU());
 					accountList.get(i).setTRANGTHAI(acc.getTRANGTHAI());
 					
-					String sql = "UPDATE `taikhoan` SET `MAKH` = '?',`MATKHAU` = '?', `HINHANH` = '?', `CHUCVU` = '?', `TRANGTHAI` = '?' WHERE `taikhoan`.`MATK` = ?";
+					String sql = "UPDATE `taikhoan` SET `MAKH` = ?,`MATKHAU` = ?, `HINHANH` = ?, `CHUCVU` = ?, `TRANGTHAI` = ? WHERE `taikhoan`.`MATK` = ?";
 					PreparedStatement stmt = db.conn.prepareStatement(sql);
 			        stmt.setInt(1, acc.getMAKH());
 			        stmt.setString(2, acc.getMATKHAU());

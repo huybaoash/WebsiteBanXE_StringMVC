@@ -19,7 +19,7 @@ public class Contract {
 		DIADIEM = "";
 		GIA	= -1;
 		NGAYLAP	= LocalTime.now();
-		TRANGTHAI	= "Công khai";
+		TRANGTHAI	= "Cï¿½ng khai";
 
 	}
 	

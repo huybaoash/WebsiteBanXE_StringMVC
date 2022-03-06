@@ -54,12 +54,12 @@ public class CarConmpanyDAO {
 		carConmpanyList = this.toList();
 		carConmpanyList.add(carcomp);
 		
-		String sql = "INSERT INTO hangsanxuat (`MAHSX`, `TENHSX`, `HINHANH`, `TRANGTHAI`) VALUES (NULL, '?', '?', 'Công khai')";
+		String sql = "INSERT INTO hangsanxuat (`TENHSX`, `HINHANH`, `TRANGTHAI`) VALUES (?, ?, ?)";
 		PreparedStatement stmt = db.conn.prepareStatement(sql);
 
         stmt.setString(1, carcomp.getTENHSX());
         stmt.setString(2, carcomp.getHINHANH());
-        
+        stmt.setString(3, carcomp.getTRANGTHAI());
 		stmt.execute();
 		stmt.close();
 		System.out.println("Thêm thành công");
@@ -90,7 +90,7 @@ public class CarConmpanyDAO {
 					carConmpanyList.get(i).setTRANGTHAI(carcomp.getTRANGTHAI());
 					
 					
-					String sql = "UPDATE `hangsanxuat` SET `TENHSX` = '?', `HINHANH` = '?', `TRANGTHAI` = '?' WHERE `hangsanxuat`.`MAHSX` = ?";
+					String sql = "UPDATE `hangsanxuat` SET `TENHSX` = ?, `HINHANH` = ?, `TRANGTHAI` = ? WHERE `hangsanxuat`.`MAHSX` = ?";
 					PreparedStatement stmt = db.conn.prepareStatement(sql);
 			        stmt.setString(1, carcomp.getTENHSX());
 			        stmt.setString(2, carcomp.getHINHANH());

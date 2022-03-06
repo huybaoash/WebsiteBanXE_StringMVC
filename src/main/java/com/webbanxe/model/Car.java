@@ -15,7 +15,7 @@ public class Car {
 		NAMSANXUAT	= 0;
 		MALOAIXE	= -1;
 		MAHSX	= -1;
-		TRANGTHAI	= "Công khai";
+		TRANGTHAI	= "CÃ´ng khai";
 
 	}
 	
