@@ -27,7 +27,7 @@ public class LoginController {
 	public static Customer Customer_present = null; 
 	
 	@RequestMapping(value = { "/login" }, method = RequestMethod.GET)
-    public String customerlistPage(Model model) throws ClassNotFoundException, SQLException {
+    public String loginGETPage(Model model) throws ClassNotFoundException, SQLException {
 		if (Account_present != null) {
 			MyController myController = new MyController();
 			return myController.homePage(model);
@@ -36,7 +36,7 @@ public class LoginController {
     }
 	
 	@RequestMapping(value = { "/login" }, method = RequestMethod.POST)
-    public String customerlistPage(Model model,HttpServletRequest request) throws ClassNotFoundException, SQLException {
+    public String loginPOSTPage(Model model,HttpServletRequest request) throws ClassNotFoundException, SQLException {
 		HttpSession session = request.getSession();
 		
 		if (Account_present != null) {

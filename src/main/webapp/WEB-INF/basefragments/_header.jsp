@@ -47,7 +47,7 @@
 
             <li style="font-weight:bold"><a class="fas fa-hotel" href="${pageContext.request.contextPath}/">TRANG CHỦ</a></li>
        		<li style="font-weight:bold"><a href="${pageContext.request.contextPath}/carconmpany-list">Hãng sản xuất</a></li>
-       		<li style="font-weight:bold"><a href="${pageContext.request.contextPath}/contract-list">Năm sản xuất</a></li>
+       		<li style="font-weight:bold"><a href="${pageContext.request.contextPath}/cartype-list">Dòng xe hơi</a></li>
        		<li style="font-weight:bold"><a href="${pageContext.request.contextPath}/contract-register">Đăng ký bán xe</a></li>
        		
        		
