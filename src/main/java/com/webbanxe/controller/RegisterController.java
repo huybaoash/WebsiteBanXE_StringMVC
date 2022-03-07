@@ -32,6 +32,12 @@ public class RegisterController {
 			return myController.homePage(model);
 		}
 		
+		Account account = new Account();
+		Customer customer = new Customer();
+		
+		model.addAttribute("customer",customer);
+		model.addAttribute("account",account);
+		
         return "register";
     }
 	
@@ -60,7 +66,7 @@ public class RegisterController {
 		
 		if (UserName.isEmpty() || UserName == null) validation.add("Tên tài khoản không được để trống !") ;
 		if (FullName.isEmpty() || FullName == null) validation.add("Họ tên không được để trống !") ;
-		if (Gender.isEmpty() || Gender == null) validation.add("Giới tính phải được chọn !") ;
+		if (Gender == null) validation.add("Giới tính phải được chọn !") ;
 		if (HomeAdress.isEmpty() || HomeAdress == null) validation.add("Địa chỉ không được để trống !") ;
 		if (CMND.isEmpty() || CMND == null) validation.add("Chứng minh nhân dân không được để trống !") ;
 		if (PhoneNumber.isEmpty() || PhoneNumber == null) validation.add("Số Điện Thoại không được để trống !") ;
@@ -90,11 +96,7 @@ public class RegisterController {
 
 		if (Password.equals(ConfirmPassword) == false) validation.add("Mật khẩu xác nhận không trùng khớp") ;
 		
-		if (validation.size() > 0) {
-			model.addAttribute("message_validation",validation);
-			return "register";
-		}
-		
+
 		Account account = new Account();
 		Customer customer = new Customer();
 		
@@ -105,13 +107,25 @@ public class RegisterController {
 		customer.setSDT(PhoneNumber);
 		customer.setTENKH(FullName);
 		
+		
+		account.setTENTK(UserName);
+		account.setMATKHAU(Password);
+		
+		
+		if (validation.size() > 0) {
+			model.addAttribute("message_validation",validation);
+			model.addAttribute("customer",customer);
+			model.addAttribute("account",account);
+			return "register";
+		}
+		
+	
+		
 		data_CustomerDAO.add(customer);
 		CustomerDAO newdata_CustomerDAO = new CustomerDAO();
 		Customer newCustomer = newdata_CustomerDAO.getCustomerByCMND(CMND);
 		
 		account.setMAKH(newCustomer.getMAKH());
-		account.setTENTK(UserName);
-		account.setMATKHAU(Password);
 		data_AccountsDAO.add(account);
 		
 		model.addAttribute("Account_present",account);

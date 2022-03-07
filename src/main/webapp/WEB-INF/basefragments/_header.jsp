@@ -1,8 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" language="java" %>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
-<c:set var="version" value="1.0.0" scope="session" />
-<c:set var="Account_present" value="${Account_present}" scope="session" />
-<c:set var="Customer_present" value="${Customer_present}" scope="session" />
+
 
 <div class="container-fluid">
         <!-- <h1>Hello World!</h1>

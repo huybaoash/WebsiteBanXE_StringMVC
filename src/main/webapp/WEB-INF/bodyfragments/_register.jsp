@@ -59,7 +59,7 @@
     <div class="form-group">
         <div class="col-md-10">
             <label for="UserName">Tên tài khoản(*)</label>
-            <input for="UserName" id = "UserName" name ="UserName" class = "form-control" maxlength = "20"> </input>
+            <input for="UserName" id = "UserName" name ="UserName" class = "form-control" maxlength = "20" value ="${account.getTENTK()}" />
         </div>
     </div>
 
@@ -67,7 +67,7 @@
     <div class="form-group">
         <div class="col-md-10">
             <label for="FullName">Họ tên(*)</label>
-            <input for="FullName"  id = "FullName" name ="FullName" class = "form-control" > </input>
+            <input for="FullName"  id = "FullName" name ="FullName" class = "form-control" value ="${customer.getTENKH()}" />
         </div>
 
     </div>
@@ -92,7 +92,7 @@
     <div class="form-group">
          <div class="col-md-10">
             <label for="HomeAdress">Địa chỉ(*)</label>
-            <input for="HomeAdress"  id = "HomeAdress" name ="HomeAdress" class = "form-control" > </input>
+            <input for="HomeAdress"  id = "HomeAdress" name ="HomeAdress" class = "form-control" value ="${customer.getDIACHI()}" /> 
         </div>
     </div>
 
@@ -100,7 +100,7 @@
     <div class="form-group">
         <div class="col-md-10">
             <label for="CMND">CMND(*)</label>
-            <input for="CMND"  id = "CMND" name ="CMND" class = "form-control" Type = "number" placeholder = "CMND mới có 12 số...", max = "999999999999" > </input>
+            <input for="CMND"  id = "CMND" name ="CMND" class = "form-control" Type = "number" placeholder = "CMND mới có 12 số...", max = "999999999999" value ="${customer.getCMND()}" />
         </div>
     </div>
 
@@ -108,7 +108,7 @@
     <div class="form-group">
         <div class="col-md-10">
             <label for="PhoneNumber">Số điện thoại (*)</label>
-            <input for="PhoneNumber"  id = "PhoneNumber" name ="PhoneNumber" class = "form-control" Type = "number" placeholder = "SDT có 10 số..." max = "999999999" > </input>
+            <input for="PhoneNumber"  id = "PhoneNumber" name ="PhoneNumber" class = "form-control" Type = "number" placeholder = "SDT có 10 số..." max = "999999999" value ="${customer.getCMND()}" /> 
             
         </div>
     </div>
@@ -116,7 +116,7 @@
     <div class="form-group">
         <div class="col-md-10">
             <label for="Email">Email (*)</label>
-            <input for="Email"  id = "Email" name ="Email" class = "form-control" > </input>
+            <input for="Email"  id = "Email" name ="Email" class = "form-control" value ="${customer.getEMAIL()}" /> 
         </div>
     </div>
 

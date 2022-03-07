@@ -37,6 +37,8 @@ public class LoginController {
 	
 	@RequestMapping(value = { "/login" }, method = RequestMethod.POST)
     public String customerlistPage(Model model,HttpServletRequest request) throws ClassNotFoundException, SQLException {
+		HttpSession session = request.getSession();
+		
 		if (Account_present != null) {
 			MyController myController = new MyController();
 			return myController.homePage(model);
@@ -46,6 +48,7 @@ public class LoginController {
 		String Password = request.getParameter("Password");
 		
 		
+	
 		AccountsDAO data_listAccountsDAO = new AccountsDAO();
 		List<Account> lstAccount = data_listAccountsDAO.toList();
 		for (Account account : lstAccount) {
@@ -53,7 +56,7 @@ public class LoginController {
 				Account_present = account;
 	
 				model.addAttribute("Account_present",Account_present);
-				
+				session.setAttribute("Account_present", Account_present);
 				break;
 				
 				
@@ -68,6 +71,7 @@ public class LoginController {
 				
 				Customer_present = customer_present;
 				model.addAttribute("Customer_present",customer_present);
+				session.setAttribute("Customer_present", Customer_present);
 				MyController myController = new MyController();
 				return myController.homePage(model);
 			}

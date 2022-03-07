@@ -117,6 +117,7 @@ public class CustomerDAO {
 	 */
 	
 	public List<Customer> update (Customer customer) throws SQLException, ClassNotFoundException{
+		this.ConnectionDB();
 		List<Customer> customerList = new ArrayList<>();
 		customerList = this.toList();
 		for (int i=0; i< customerList.size();i++) {
@@ -131,7 +132,7 @@ public class CustomerDAO {
 
 					
 					
-					String sql = "UPDATE `khachhang` SET `TENKH` = ?, `SDT` = ?, `EMAIL` = ?, `GIOITINH` = ?, `DIACHI` = ?, `CMND` = ? WHERE `khachhang`.`MAKH` = ?";
+					String sql = "UPDATE `khachhang` SET `TENKH` = ?, `SDT` = ?, `EMAIL` = ?, `GIOITINH` = ?, `DIACHI` = ?, `CMND` = ? WHERE `khachhang`.`MAKH` = ? ";
 					PreparedStatement stmt = db.conn.prepareStatement(sql);
 					stmt.setString(1, customer.getTENKH());
 			        stmt.setString(2, customer.getSDT());

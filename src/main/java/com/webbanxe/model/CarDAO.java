@@ -104,6 +104,7 @@ public class CarDAO {
 	 */
 	
 	public List<Car> update (Car car) throws SQLException, ClassNotFoundException{
+		this.ConnectionDB();
 		List<Car> carList = new ArrayList<>();
 		carList = this.toList();
 		for (int i=0; i< carList.size();i++) {

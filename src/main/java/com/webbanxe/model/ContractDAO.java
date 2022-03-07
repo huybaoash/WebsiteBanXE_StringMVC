@@ -102,6 +102,7 @@ public class ContractDAO {
 	 */
 	
 	public List<Contract> update (Contract contract) throws SQLException, ClassNotFoundException{
+		this.ConnectionDB();
 		List<Contract> contractList = new ArrayList<>();
 		contractList = this.toList();
 		for (int i=0; i< contractList.size();i++) {

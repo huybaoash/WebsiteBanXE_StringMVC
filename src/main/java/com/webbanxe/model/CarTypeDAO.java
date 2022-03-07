@@ -82,6 +82,7 @@ public ConnectionDB db;
 	 */
 	
 	public List<CarType> update (CarType carcomp) throws SQLException, ClassNotFoundException{
+		this.ConnectionDB();
 		List<CarType> carTypeList = new ArrayList<>();
 		carTypeList = this.toList();
 		for (int i=0; i< carTypeList.size();i++) {

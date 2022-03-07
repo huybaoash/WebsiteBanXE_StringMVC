@@ -1,5 +1,8 @@
 <%@ page language="java" pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+<c:set var="version" value="1.0.0" scope="session" />
+<c:set var="Account_present" value="${Account_present}" scope="session" />
+<c:set var="Customer_present" value="${Customer_present}" scope="session" />
 
 <div class="container tt">
 <div>
@@ -18,7 +21,7 @@
                             
                             <a href="">Số xe đã đăng: </a>
                            
-                                <div class="edit-tt"> <a href=""><i class="far fa-edit"></i> Chỉnh sửa thông tin</a></div>
+                                <div class="edit-tt"> <a href="${pageContext.request.contextPath}/userinfo-edit"><i class="far fa-edit"></i> Chỉnh sửa thông tin</a></div>
                                 <div class="edit-tt"> <a href=""><i class="far fa-edit"></i> Danh sách CV đã gửi</a></div>
                               
 

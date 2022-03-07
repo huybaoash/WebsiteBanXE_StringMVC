@@ -96,6 +96,7 @@ public class AccountsDAO {
 	 */
 	
 	public List<Account> update (Account acc) throws SQLException, ClassNotFoundException{
+		this.ConnectionDB();
 		List<Account> accountList = new ArrayList<>();
 		accountList = this.toList();
 		for (int i=0; i< accountList.size();i++) {
