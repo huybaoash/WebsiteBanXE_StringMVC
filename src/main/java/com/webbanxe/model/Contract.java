@@ -1,13 +1,17 @@
 package com.webbanxe.model;
 
+import java.sql.Date;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
+
 
 
 public class Contract {
 	private int		MAHD,	MANGUOIBAN,		MANGUOIMUA,		MAXE;
 	private String	NOIDUNGHD,	TRANGTHAI,	DIADIEM;
 	private double GIA;
-	private LocalTime NGAYLAP;
+	private Date NGAYLAP;
 	
 	public Contract() {
 
@@ -18,15 +22,15 @@ public class Contract {
 		NOIDUNGHD	= "";
 		DIADIEM = "";
 		GIA	= -1;
-		NGAYLAP	= LocalTime.now();
-		TRANGTHAI	= "C�ng khai";
+		NGAYLAP	=	Date.valueOf(LocalDate.now());
+		TRANGTHAI	= "Công khai";
 
 	}
 	
 	public Contract( int		mAHD,int	mANGUOIBAN,int		mANGUOIMUA,int		mAXE,
 	String	nOIDUNGHD,String	tRANGTHAI, String dIADIEM,
 	double gIA,
-	LocalTime nGAYLAP) {
+	Date nGAYLAP) {
 		MAHD = mAHD;	
 		MANGUOIBAN = mANGUOIBAN;	
 		MANGUOIMUA	 = mANGUOIMUA;
@@ -104,11 +108,11 @@ public class Contract {
 		GIA = gIA;
 	}
 
-	public LocalTime getNGAYLAP() {
+	public Date getNGAYLAP() {
 		return NGAYLAP;
 	}
 
-	public void setNGAYLAP(LocalTime nGAYLAP) {
+	public void setNGAYLAP(Date nGAYLAP) {
 		NGAYLAP = nGAYLAP;
 	}
 	

@@ -12,7 +12,7 @@
         padding: 20px;
         border-radius: 5px;
     }
-    #displayImg img {
+    #displayImg1 img {
         height: 50px;
         width: 50px;
         margin-right: 10px;
@@ -44,16 +44,30 @@
         text-decoration: none;
     }
 </style>
+<form action = "contract-register.htm" method="post" enctype='multipart/form-data'>
 
 <div class="container tt" style ="padding-right: 0px;padding-left: 100px;">
 	<h2>LẬP HỢP ĐỒNG</h2>
             <hr>
+            
+            <c:choose>
+	    	<c:when test="${message_validation != null}">
+		        <c:forEach var = "i" begin = "0" end = "${message_validation.size()-1}">
+		     		<label for="Validation" class="text-danger" style="margin-left:0px">${message_validation.get(i)}</label>
+	                 <br />     
+				</c:forEach>
+		    </c:when>    
+		    <c:otherwise>
+		        
+		    </c:otherwise>
+			</c:choose>
+	
             <div class="formall">
                 <div class="formCreate">
 
                     <div class="form-group">
                         <label for="TENXE">Tên Xe</label>
-                        <input id = "TENXE" name ="TENXE" class = "form-control" placeholder = "Tên xe" /> 
+                        <input id = "TENXE" name ="TENXE" class = "form-control" placeholder = "Tên xe" required/> 
                         
                     </div>
                     <div class="form-group">
@@ -102,19 +116,24 @@
 
                     <div class="form-group">
                         <label for="NOIDUNGXE">Thông tin xe</label>
-                        <textarea class = "form-control" cols="20" id="NOIDUNGXE" name="NOIDUNGXE" rows="10" placeholder = "Yêu cầu điền nội dung thông tin chính xác!"></textarea>
+                        <textarea class = "form-control" cols="20" id="NOIDUNGXE" name="NOIDUNGXE" rows="10" placeholder = "Yêu cầu điền nội dung thông tin chính xác!" required></textarea>
                     </div>
-
+					
+					<div class="form-group">
+                        <label for="NOIDUNGHD">Nôi dung hợp đồng</label>
+                        <textarea class = "form-control" cols="20" id="NOIDUNGHD" name="NOIDUNGHD" rows="20" disabled> </textarea>
+                    </div>
+					
 					<div class="form-group">
                         <div class="row">
                             <div class="col-md-6">
                                 <label for="BAOHANH">Bảo hành</label>
-                                <input type = "number" max = "1200" id = "BAOHANH" name ="BAOHANH" class = "form-control" placeholder = "Nhập số tháng bảo hành. Tối đa là 100 năm." />                                
+                                <input type = "number" max = "1200" min ="0" id = "BAOHANH" name ="BAOHANH" class = "form-control" placeholder = "Nhập số tháng bảo hành. Tối đa là 100 năm." required/>                                
                             </div>
 
                             <div class="col-md-6">
                                 <label for="NAMSANXUAT">Năm sản xuất</label>
-                                <input type = "number" min = "1900" max = "9999" id = "NAMSANXUAT" name ="NAMSANXUAT" class = "form-control" placeholder = "Nhập năm sản xuất." />                                
+                                <input type = "number" min = "1900" max = "9999" id = "NAMSANXUAT" name ="NAMSANXUAT" class = "form-control" placeholder = "Nhập năm sản xuất." required/>                                
                             </div>
                             
                         </div>
@@ -124,12 +143,12 @@
                         <div class="row">
                             <div class="col-md-3">
                                 <label for="GIAXE">Giá</label>
-                                <input type = "number" id = "GIAXE" name ="GIAXE" class = "form-control" placeholder = "Nhập giá." min = "0"/>
+                                <input type = "number" id = "GIAXE" name ="GIAXE" class = "form-control" placeholder = "Nhập giá." min = "0" required/>
                             </div>
 
                             <div class="col-md-9">
                                 <label for=""DIADIEM"">Nơi bán</label>
-								<input type = "text" id = "DIADIEM" name ="DIADIEM" class = "form-control" placeholder = "Thành phố Hồ Chí Minh"/>
+								<input type = "text" id = "DIADIEM" name ="DIADIEM" class = "form-control" placeholder = "Thành phố Hồ Chí Minh" required/>
                                
                             </div>
                         </div>
@@ -168,7 +187,7 @@
                 </div>
             </div>
         </div>
-        
+  </form>      
         
         
  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> 

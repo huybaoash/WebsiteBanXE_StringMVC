@@ -25,7 +25,7 @@ public class ContractDAO {
             Contract.setMAXE(db.rs.getInt("MAXE"));
             Contract.setNOIDUNGHD(db.rs.getString("NOIDUNGHD"));
             Contract.setGIA(db.rs.getDouble("GIA"));
-            Contract.setNGAYLAP((LocalTime) db.rs.getObject("NGAYLAP"));
+            Contract.setNGAYLAP(db.rs.getDate("NGAYLAP"));
             Contract.setTRANGTHAI(db.rs.getString("TRANGTHAI"));
             Contract.setMAHD(db.rs.getInt("MAHD"));
             Contract.setDIADIEM(db.rs.getString("DIADIEM"));
@@ -41,7 +41,7 @@ public class ContractDAO {
         List<Contract> contractList = new ArrayList<>();
         
         
-        db.rs = db.stmt.executeQuery("SELECT * FROM taikhoan");
+        db.rs = db.stmt.executeQuery("SELECT * FROM hopdong");
 		while(db.rs.next()){
             Contract contract = new Contract();
             contract.setMAHD(db.rs.getInt("MAHD"));
@@ -50,7 +50,7 @@ public class ContractDAO {
             contract.setMAXE(db.rs.getInt("MAXE"));
             contract.setNOIDUNGHD(db.rs.getString("NOIDUNGHD"));
             contract.setGIA(db.rs.getDouble("GIA"));
-            contract.setNGAYLAP((LocalTime) db.rs.getObject("NGAYLAP"));
+            contract.setNGAYLAP(db.rs.getDate("NGAYLAP"));
             contract.setTRANGTHAI(db.rs.getString("TRANGTHAI"));
             contract.setDIADIEM(db.rs.getString("DIADIEM"));
             contractList.add(contract);
@@ -65,18 +65,18 @@ public class ContractDAO {
 		contractList = this.toList();
 		contractList.add(contract);
 		
-		String sql = "INSERT INTO `hopdong` (`MANGUOIBAN`, `MANGUOIMUA`, `MAXE`, `NOIDUNGHD`, `GIA`, `NGAYLAP`, `TRANGTHAI`, `DIADIEM`) "
-				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+		String sql = "INSERT INTO `hopdong` (`MANGUOIBAN`, `MAXE`, `NOIDUNGHD`, `GIA`, `TRANGTHAI`, `DIADIEM`) "
+				+ "VALUES (?, ?, ?, ?, ?, ? )";
 		PreparedStatement stmt = db.conn.prepareStatement(sql);
 
         stmt.setInt(1, contract.getMANGUOIBAN());
-        stmt.setInt(2, contract.getMANGUOIMUA());
-        stmt.setInt(3, contract.getMAXE());
-        stmt.setString(4, contract.getNOIDUNGHD());
-        stmt.setDouble(5, contract.getGIA());
-        stmt.setObject(6, contract.getNGAYLAP());
-        stmt.setString(7, contract.getTRANGTHAI());
-        stmt.setString(8, contract.getDIADIEM());
+ 
+        stmt.setInt(2, contract.getMAXE());
+        stmt.setString(3, contract.getNOIDUNGHD());
+        stmt.setDouble(4, contract.getGIA());
+        
+        stmt.setString(5, contract.getTRANGTHAI());
+        stmt.setString(6, contract.getDIADIEM());
 		stmt.execute();
 		stmt.close();
 		System.out.println("Thêm thành công");
@@ -119,17 +119,17 @@ public class ContractDAO {
 
 					
 					
-					String sql = "UPDATE `hopdong` SET `MANGUOIBAN` = ?, `MANGUOIMUA` = ?, `MAXE` = ?, `NOIDUNGHD` = ?, `GIA` = ?, `NGAYLAP` = ?, `TRANGTHAI` = ?, `DIADIEM` = ? WHERE `hopdong`.`MAHD` = ?";
+					String sql = "UPDATE `hopdong` SET `MANGUOIMUA` = ?, `NOIDUNGHD` = ?, `GIA` = ?, `TRANGTHAI` = ?, `DIADIEM` = ? WHERE `hopdong`.`MAHD` = ?";
 					PreparedStatement stmt = db.conn.prepareStatement(sql);
-					stmt.setInt(1, contract.getMANGUOIBAN());
-			        stmt.setInt(2, contract.getMANGUOIMUA());
-			        stmt.setInt(3, contract.getMAXE());
-			        stmt.setString(4, contract.getNOIDUNGHD());
-			        stmt.setDouble(5, contract.getGIA());
-			        stmt.setObject(6, contract.getNGAYLAP());
-			        stmt.setString(7, contract.getTRANGTHAI());
-			        stmt.setString(8, contract.getDIADIEM());
-			        stmt.setInt(9, contract.getMAHD());
+		
+			        stmt.setInt(1, contract.getMANGUOIMUA());
+
+			        stmt.setString(2, contract.getNOIDUNGHD());
+			        stmt.setDouble(3, contract.getGIA());
+	
+			        stmt.setString(4, contract.getTRANGTHAI());
+			        stmt.setString(5, contract.getDIADIEM());
+			        stmt.setInt(6, contract.getMAHD());
 			        
 			        
 			        stmt.execute();

@@ -41,7 +41,7 @@ public class CarDAO {
         List<Car> carList = new ArrayList<>();
         
         
-        db.rs = db.stmt.executeQuery("SELECT * FROM taikhoan");
+        db.rs = db.stmt.executeQuery("SELECT * FROM xe");
 		while(db.rs.next()){
             Car car = new Car();
             car.setMAXE(db.rs.getInt("MAXE"));
