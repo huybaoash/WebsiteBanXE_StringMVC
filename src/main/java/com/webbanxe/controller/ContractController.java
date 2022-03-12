@@ -53,7 +53,8 @@ import com.webbanxe.model.Customer;
 import com.webbanxe.model.CustomerDAO;
 import com.webbanxe.model.HelloWorld;
 import com.webbanxe.model.MyUploadForm;
-
+import com.webbanxe.model.ViewModel.ContractCarDetailsView;
+import com.webbanxe.model.ViewModel.ContractCarDetailsViewDAO;
 
 import net.balusc.http.multipart.MultipartMap;
 
@@ -150,7 +151,7 @@ public class ContractController extends HttpServlet {
 	}
 	    multipartFile.transferTo(file);
 	    
-	    return "/images/car/hopdong" + contract.getMAHD() + "/"  + multipartFile.getOriginalFilename();
+	    return "images/car/hopdong" + contract.getMAHD() + "/"  + multipartFile.getOriginalFilename();
 	}
 	
 	
@@ -252,8 +253,11 @@ public class ContractController extends HttpServlet {
     }
 	
 	@RequestMapping(value = { "/contract-list" }, method = RequestMethod.GET)
-    public String contractlistPage(Model model , HttpServletRequest request) {
-
+    public String contractlistPage(Model model , HttpServletRequest request, @RequestParam int MAHSX) throws ClassNotFoundException, SQLException {
+		ContractCarDetailsViewDAO data_HD = new ContractCarDetailsViewDAO();
+    	List<ContractCarDetailsView> lstHD = data_HD.toListByMAHSX(MAHSX);
+    	
+    	model.addAttribute("lstHD",lstHD);
         return "contractlist";
     }
 }

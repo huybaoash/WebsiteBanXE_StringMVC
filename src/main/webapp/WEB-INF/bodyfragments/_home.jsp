@@ -105,32 +105,43 @@
 	    
     <h3>Tất cả</h3>
    
-    <div class="row">
-  
-        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+    
+  			
+  			<c:forEach var = "i" begin = "0" end = "${lstHD.size()-1}">
+  			<div class="row">
+				
                 <div class="panel panel-default" style="width: 900px" >
                     <div class="panel panel-heading">
-                        Xe aaa
+                        ${lstHD.get(i).getTENXE()}
                     </div>
                     <div class="panel-body">
-                        <p>
-                            <img src="@item.Image" style="width: 120;height:120" />
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                    	<p>
+                            <img src="${lstHD.get(i).getHINHANH()}" style="width: 120;height:120" />
                         </p> 
-                        <p>
-                            <strong>Nhà sản xuất: </strong>Honda
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12">
+                    	<p>
+                            <strong>Hãng sản xuất: </strong>${lstHD.get(i).getTENHSX()}
                         </p>
                         <p>
-                            <strong>Nhà phát hành: </strong>Suzuki
+                            <strong>Loại xe: </strong>${lstHD.get(i).getTENLOAIXE()}
                         </p>
                         <p>
-                            <strong>Giá niêm yết: </strong>5.000.000
+                            <strong>Giá hợp đồng: </strong>${lstHD.get(i).getGIA()}
                         </p>
+                    </div>    
+                        
                     </div>
                     
                 </div>
+            
             </div>
+			</c:forEach>
+  			
+        	
         
-	</div>
+	
 </div>
 
 

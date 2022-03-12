@@ -14,6 +14,8 @@ import com.webbanxe.model.AccountsDAO;
 import com.webbanxe.model.CarType;
 import com.webbanxe.model.CarTypeDAO;
 import com.webbanxe.model.HelloWorld;
+import com.webbanxe.model.ViewModel.ContractCarDetailsView;
+import com.webbanxe.model.ViewModel.ContractCarDetailsViewDAO;
 
 @Controller
 public class MyController {
@@ -23,6 +25,11 @@ public class MyController {
     	CarTypeDAO data_LoaiXE = new CarTypeDAO();
     	List<CarType> lstLoaiXE = data_LoaiXE.toList();
     	model.addAttribute("lstLoaiXE",lstLoaiXE);
+    	
+    	ContractCarDetailsViewDAO data_HD = new ContractCarDetailsViewDAO();
+    	List<ContractCarDetailsView> lstHD = data_HD.toList();
+    	
+    	model.addAttribute("lstHD",lstHD);
     	
         return "homePage";
     }
