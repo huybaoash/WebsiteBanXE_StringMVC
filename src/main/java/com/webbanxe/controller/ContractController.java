@@ -252,10 +252,19 @@ public class ContractController extends HttpServlet {
         
     }
 	
-	@RequestMapping(value = { "/contract-list" }, method = RequestMethod.GET)
-    public String contractlistPage(Model model , HttpServletRequest request, @RequestParam int MAHSX) throws ClassNotFoundException, SQLException {
+	@RequestMapping(value = { "/contract-list-searchbycartype" }, method = RequestMethod.GET)
+    public String contractlistMAHSXPage(Model model , HttpServletRequest request, @RequestParam int MAHSX) throws ClassNotFoundException, SQLException {
 		ContractCarDetailsViewDAO data_HD = new ContractCarDetailsViewDAO();
     	List<ContractCarDetailsView> lstHD = data_HD.toListByMAHSX(MAHSX);
+    	
+    	model.addAttribute("lstHD",lstHD);
+        return "contractlist";
+    }
+	
+	@RequestMapping(value = { "/contract-list-searchbycarcompany" }, method = RequestMethod.GET)
+    public String contractlistMALOAIXEPage(Model model , HttpServletRequest request, @RequestParam int MALOAIXE) throws ClassNotFoundException, SQLException {
+		ContractCarDetailsViewDAO data_HD = new ContractCarDetailsViewDAO();
+    	List<ContractCarDetailsView> lstHD = data_HD.toListByMALOAIXE(MALOAIXE);
     	
     	model.addAttribute("lstHD",lstHD);
         return "contractlist";
