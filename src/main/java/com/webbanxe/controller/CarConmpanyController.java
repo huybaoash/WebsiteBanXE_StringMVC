@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,6 +30,29 @@ public class CarConmpanyController {
     	model.addAttribute("lstHangXE",lstHangXE);
     	
         return "carconmpanylist";
+    }
+	
+	@RequestMapping(value = { "/carconmpany-list-admin" }, method = RequestMethod.GET)
+    public String carconmanylistAdmin(Model model , HttpServletRequest request) throws ClassNotFoundException, SQLException {
+		
+		HttpSession session = request.getSession();
+		Account Account_present = (Account) session.getAttribute("Account_present");
+
+		
+		if (Account_present == null) {
+			
+			
+			LoginController loginController = new LoginController();
+			return loginController.loginGETPage(model);
+		}
+		
+		CarConmpanyDAO data_HangXE = new CarConmpanyDAO();
+    	List<CarConmpany> lstHangXE = data_HangXE.toList();
+    	model.addAttribute("lstHangXE",lstHangXE);
+    	
+    	model.addAttribute("Account_present",Account_present);
+    	
+        return "carconmpanylistadmin";
     }
 	
 	@RequestMapping(value = { "/carconmany-edit" }, method = RequestMethod.GET)

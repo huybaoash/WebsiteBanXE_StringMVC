@@ -29,7 +29,7 @@
                             <strong>Loại xe: </strong>${lstHD.get(i).getTENLOAIXE()}
                         </p>
                         <p>
-                            <strong>Giá hợp đồng: </strong>${lstHD.get(i).getGIA()}
+                            <strong>Giá hợp đồng: </strong>${String.format("%,.0f",lstHD.get(i).getGIA())}
                         </p>
                     </div>    
                         

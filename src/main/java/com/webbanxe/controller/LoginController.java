@@ -27,7 +27,10 @@ public class LoginController {
 	public static Customer Customer_present = null; 
 	
 	@RequestMapping(value = { "/login" }, method = RequestMethod.GET)
+	
     public String loginGETPage(Model model) throws ClassNotFoundException, SQLException {
+		
+		
 		if (Account_present != null) {
 			MyController myController = new MyController();
 			return myController.homePage(model);
@@ -48,35 +51,28 @@ public class LoginController {
 		String Password = request.getParameter("Password");
 		
 		
-	
+		
+		
 		AccountsDAO data_listAccountsDAO = new AccountsDAO();
 		List<Account> lstAccount = data_listAccountsDAO.toList();
 		for (Account account : lstAccount) {
 			if (account.getTENTK().equals(UserName)&& account.getMATKHAU().equals(Password)) {
 				Account_present = account;
 	
-				model.addAttribute("Account_present",Account_present);
-				session.setAttribute("Account_present", Account_present);
-				break;
-				
-				
-			}
-		}
-		
-		CustomerDAO dataCustomerDAO = new CustomerDAO();
-		List<Customer> lstCustomers = dataCustomerDAO.toList();
-		
-		for (Customer customer_present : lstCustomers) {
-			if (Account_present.getMAKH() == customer_present.getMAKH() ) {
-				
-				Customer_present = customer_present;
-				model.addAttribute("Customer_present",customer_present);
-				session.setAttribute("Customer_present", Customer_present);
+				model.addAttribute("Account_present",account);
+				session.setAttribute("Account_present", account);
 				MyController myController = new MyController();
 				return myController.homePage(model);
+				
+				
+				
 			}
+			
 		}
 		
+		
+
+	
 		
 		model.addAttribute("message_account","Sai tên đăng nhập hoặc mật khẩu !");
         return "login";

@@ -252,7 +252,7 @@ public class ContractController extends HttpServlet {
         
     }
 	
-	@RequestMapping(value = { "/contract-list-searchbycartype" }, method = RequestMethod.GET)
+	@RequestMapping(value = { "/contract-list-searchbycarcompany" }, method = RequestMethod.GET)
     public String contractlistMAHSXPage(Model model , HttpServletRequest request, @RequestParam int MAHSX) throws ClassNotFoundException, SQLException {
 		ContractCarDetailsViewDAO data_HD = new ContractCarDetailsViewDAO();
     	List<ContractCarDetailsView> lstHD = data_HD.toListByMAHSX(MAHSX);
@@ -261,12 +261,34 @@ public class ContractController extends HttpServlet {
         return "contractlist";
     }
 	
-	@RequestMapping(value = { "/contract-list-searchbycarcompany" }, method = RequestMethod.GET)
+	@RequestMapping(value = { "/contract-list-searchbycartype" }, method = RequestMethod.GET)
     public String contractlistMALOAIXEPage(Model model , HttpServletRequest request, @RequestParam int MALOAIXE) throws ClassNotFoundException, SQLException {
 		ContractCarDetailsViewDAO data_HD = new ContractCarDetailsViewDAO();
     	List<ContractCarDetailsView> lstHD = data_HD.toListByMALOAIXE(MALOAIXE);
     	
     	model.addAttribute("lstHD",lstHD);
         return "contractlist";
+    }
+	
+	@RequestMapping(value = { "/contract-list-admin" }, method = RequestMethod.GET)
+    public String contractlistAdminPage(Model model , HttpServletRequest request) throws ClassNotFoundException, SQLException {
+		
+		HttpSession session = request.getSession();
+		Account Account_present = (Account) session.getAttribute("Account_present");
+
+		
+		if (Account_present == null) {
+			
+			
+			LoginController loginController = new LoginController();
+			return loginController.loginGETPage(model);
+		}
+		
+		ContractCarDetailsViewDAO data_HD = new ContractCarDetailsViewDAO();
+    	List<ContractCarDetailsView> lstHD = data_HD.toList();
+    	
+    	model.addAttribute("Account_present",Account_present);
+    	model.addAttribute("lstHD",lstHD);
+        return "contractlistadmin";
     }
 }

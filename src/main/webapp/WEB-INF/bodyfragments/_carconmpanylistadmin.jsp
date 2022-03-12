@@ -1,8 +1,5 @@
 <%@ page language="java" pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
-
-
-
 <style>
     .menu-list {
         font-size: 18px;
@@ -37,9 +34,9 @@
 </style>
 
 <c:choose>
-	   
+	    
 	<c:when test="${Account_present.getCHUCVU() eq 'Người Quản Trị'}">
-	<div class="container tt">	 
+	<div class="container tt">
 		 <div id="menu">
 		    <ul class="menu-list" style = "display:flex;  list-style:none;">
 		        <li class="menu-item">

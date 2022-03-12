@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.webbanxe.model.Account;
 import com.webbanxe.model.AccountsDAO;
+import com.webbanxe.model.CarConmpany;
+import com.webbanxe.model.CarConmpanyDAO;
 import com.webbanxe.model.Customer;
 import com.webbanxe.model.CustomerDAO;
 import com.webbanxe.model.HelloWorld;
@@ -46,8 +48,27 @@ public class AccountController {
     }
 	
 	@RequestMapping(value = { "/account-list" }, method = RequestMethod.GET)
-    public String accountlistPage(Model model,HttpServletRequest request) {
+    public String accountlistPage(Model model,HttpServletRequest request) throws ClassNotFoundException, SQLException {
 
+		HttpSession session = request.getSession();
+		Account Account_present = (Account) session.getAttribute("Account_present");
+
+		
+		if (Account_present == null) {
+			
+			
+			LoginController loginController = new LoginController();
+			return loginController.loginGETPage(model);
+		}
+		
+		AccountsDAO data_accAccountsDAO = new AccountsDAO();
+    	List<Account> lstAccounts = data_accAccountsDAO.toList();
+    	model.addAttribute("lstAccounts",lstAccounts);
+    	
+    	model.addAttribute("Account_present",Account_present);
+    	
+        
+		
         return "accountlist";
     }
 	
