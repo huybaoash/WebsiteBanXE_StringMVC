@@ -27,15 +27,43 @@ import com.webbanxe.model.ViewModel.ContractCarDetailsViewDAO;
 @Controller
 public class CarTypeController {
 	@RequestMapping(value = { "/cartype-register" }, method = RequestMethod.GET)
-    public String cartyperegisterPage(Model model) throws ClassNotFoundException, SQLException {
+    public String cartyperegisterPage(Model model, HttpServletRequest request) throws ClassNotFoundException, SQLException {
 
+		HttpSession session = request.getSession();
+		Account Account_present = (Account) session.getAttribute("Account_present");
+
+		
+		if (Account_present == null) {
+			
+			
+			LoginController loginController = new LoginController();
+			return loginController.loginGETPage(model);
+		}
 		
         return "cartyperegister";
     }
 	
 	@RequestMapping(value = { "/cartype-edit" }, method = RequestMethod.GET)
-    public String cartypeeditPage(Model model) {
+    public String cartypeeditPage(Model model, HttpServletRequest request,@RequestParam int MALOAIXE) throws ClassNotFoundException, SQLException {
+		
+		HttpSession session = request.getSession();
+		Account Account_present = (Account) session.getAttribute("Account_present");
 
+		
+		if (Account_present == null) {
+			
+			
+			LoginController loginController = new LoginController();
+			return loginController.loginGETPage(model);
+		}
+		
+		CarTypeDAO data_LoaiXE = new CarTypeDAO();
+    	
+    	CarType loaixe = data_LoaiXE.getCarType(MALOAIXE);
+    	model.addAttribute("loaixe",loaixe);
+    	
+    	model.addAttribute("Account_present",Account_present);
+		
         return "cartypeedit";
     }
 	

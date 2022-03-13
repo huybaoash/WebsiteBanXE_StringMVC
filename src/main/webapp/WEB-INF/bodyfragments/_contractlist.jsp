@@ -3,7 +3,7 @@
 
    <c:choose>
     <c:when test="${lstHD.size() != 0}">
-    
+    <div class="container tt">
 		<title>Danh sách tài khoản</title>
 		<h1>DS giao dịch hợp đồng</h1>
 		
@@ -39,7 +39,7 @@
             
             </div>
 			</c:forEach>
-  			
+  		</div>	
 	    </c:when>    
 	    <c:otherwise>
 	        Hông có

@@ -67,7 +67,7 @@
 		</div>
 		
 		<div style="margin:10px 0px;font-size:18px">
-		    <i class="fas fa-plus" style="color:blue"></i>  <a href="" ">Thêm hãng sản xuất</a>
+		    <i class="fas fa-plus" style="color:blue"></i>  <a href="${pageContext.request.contextPath}/carconmany-register" >Thêm hãng sản xuất</a>
 		</div>
 		
 		<table class="table">
@@ -82,7 +82,7 @@
 		            <td style ="border:0.5px solid grey">${hangxe.getTENHSX()}</td>
 		            <td style ="border:0.5px solid grey">${hangxe.getTRANGTHAI()}</td>
 		            <td style ="border:0.5px solid grey">
-		            	<a href="" class="btn btn-warning btn-sm" ">Sửa</a>
+		            	<a href="${pageContext.request.contextPath}/carconmany-edit?&MAHSX=${hangxe.getMAHSX()}" class="btn btn-warning btn-sm" ">Sửa</a>
 		            	<a href="${pageContext.request.contextPath}/carconmany-details?&MAHSX=${hangxe.getMAHSX()}" class="btn btn-info btn-sm">Chi tiết</a>
 		            	<c:choose>
 								<c:when test="${hangxe.getTRANGTHAI() eq 'Công khai'}">

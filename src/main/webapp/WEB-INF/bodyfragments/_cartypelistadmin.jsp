@@ -68,7 +68,7 @@
 		</div>
 		
 		<div style="margin:10px 0px;font-size:18px">
-		    <i class="fas fa-plus" style="color:blue"></i>  <a href="" ">Thêm loại xe</a>
+		    <i class="fas fa-plus" style="color:blue"></i>  <a href="${pageContext.request.contextPath}/cartype-register"  >Thêm loại xe</a>
 		</div>
 		
 		<table class="table">
@@ -83,7 +83,7 @@
 		            <td style ="border:0.5px solid grey">${loaixe.getTENLOAIXE()}</td>
 		            <td style ="border:0.5px solid grey">${loaixe.getTRANGTHAI()}</td>
 		            <td style ="border:0.5px solid grey">
-		            	<a href ="" class="btn btn-warning btn-sm" >Sửa</a>
+		            	<a href="${pageContext.request.contextPath}/cartype-edit?&MALOAIXE=${loaixe.getMALOAIXE()}" class="btn btn-warning btn-sm" >Sửa</a>
 		            	<a href="${pageContext.request.contextPath}/cartype-details?&MALOAIXE=${loaixe.getMALOAIXE()}"  class="btn btn-info btn-sm">Chi tiết</a>
 		            	<c:choose>
 								<c:when test="${loaixe.getTRANGTHAI() eq 'Công khai'}">

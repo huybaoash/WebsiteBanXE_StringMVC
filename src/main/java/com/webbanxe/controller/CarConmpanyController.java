@@ -57,8 +57,25 @@ public class CarConmpanyController {
     }
 	
 	@RequestMapping(value = { "/carconmany-edit" }, method = RequestMethod.GET)
-    public String carconmanyeditPage(Model model) {
+    public String carconmanyeditPage(Model model, HttpServletRequest request,@RequestParam int MAHSX) throws ClassNotFoundException, SQLException {
+		HttpSession session = request.getSession();
+		Account Account_present = (Account) session.getAttribute("Account_present");
 
+		
+		if (Account_present == null) {
+			
+			
+			LoginController loginController = new LoginController();
+			return loginController.loginGETPage(model);
+		}
+		
+		CarConmpanyDAO data_HangXE = new CarConmpanyDAO();
+    	
+    	CarConmpany hsx = data_HangXE.getCarConmpany(MAHSX);
+    	model.addAttribute("hsx",hsx);
+    	
+    	model.addAttribute("Account_present",Account_present);
+    	
         return "carconmpanyedit";
     }
 	
