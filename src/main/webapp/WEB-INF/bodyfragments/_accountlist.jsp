@@ -68,6 +68,43 @@
 			        <button type="submit" class="btn btn-primary" style="padding:0px 30px"> <i class="fas fa-search"></i> </button>
 			    </p>
 		</div>
+		
+		
+		<table class="table">
+		    <tr style="border:0.5px solid grey">
+		        <th style="width:30%; text-align:left;border:0.5px solid grey"> <label>Tên người dùng</label></th>
+		        <th style="width:20%; text-align:left;border:0.5px solid grey"> <label>Chức vụ</label></th>
+		        <th style="width:20%; text-align:left;border:0.5px solid grey"><label>Trạng thái</label></th>
+		        <th style="text-align:left;border:0.5px solid grey"><label>Tác vụ</label></th>
+		    </tr>
+			<c:forEach var = "nguoidung"  items = "${lstAccounts}">
+		    
+		        <tr style="border:0.5px solid grey">
+		            <td style ="border:0.5px solid grey"><a href="${pageContext.request.contextPath}/otheruserinfo?&MATK= ${nguoidung.getMATK()}">${nguoidung.getTENTK()}</a></td>
+		            <td style ="border:0.5px solid grey">${nguoidung.getCHUCVU()}</td>
+		            <td style ="border:0.5px solid grey">${nguoidung.getTRANGTHAI()}</td>
+		            <td style ="border:0.5px solid grey">
+		            	<c:choose>
+								<c:when test="${nguoidung.getTRANGTHAI() eq 'Đang hoạt động'}">
+									<a href="" class="btn btn-success btn-sm" onclick="lockTT()"><i class="fas fa-unlock-alt"></i> Khóa tài khoản ?</a>
+								</c:when>
+								<c:otherwise>
+									<c:choose>
+											<c:when test="${nguoidung.getTRANGTHAI() eq 'Đã khóa'}">
+												<a href="" class="btn btn-success btn-sm" onclick="unblockTT()"><i class="fas fa-unlock-alt"></i> Mở khóa</a>
+											</c:when>
+											<c:otherwise>
+											</c:otherwise>
+									</c:choose>
+		            
+								</c:otherwise>
+						</c:choose>
+		            	
+		            </td>
+		        </tr>
+		    </c:forEach>
+		</table>
+		
 		</div>
 		
 	</c:when> 

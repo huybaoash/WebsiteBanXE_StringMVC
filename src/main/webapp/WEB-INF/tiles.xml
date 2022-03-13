@@ -44,6 +44,12 @@
        <put-attribute name="body" value="/WEB-INF/bodyfragments/_accountlist.jsp" />  
    </definition>
 
+   <!-- Chi tiết hãng sx -->
+   <definition name="carconmpanydetails" extends="base.definition">  
+       <put-attribute name="title" value="carconmpanydetails" />  
+       <put-attribute name="body" value="/WEB-INF/bodyfragments/_carconmpanydetails.jsp" />  
+   </definition>
+
    <!-- Sửa hãng sx -->
    <definition name="carconmpanyedit" extends="base.definition">  
        <put-attribute name="title" value="carconmpanyedit" />  
@@ -78,6 +84,12 @@
    <definition name="cartypeedit" extends="base.definition">  
        <put-attribute name="title" value="cartypeedit" />  
        <put-attribute name="body" value="/WEB-INF/bodyfragments/_cartypeedit.jsp" />  
+   </definition>
+   
+       <!-- Chi tiết loại xe -->
+   <definition name="cartypedetails" extends="base.definition">  
+       <put-attribute name="title" value="cartypedetails" />  
+       <put-attribute name="body" value="/WEB-INF/bodyfragments/_cartypedetails.jsp" />  
    </definition>
    
    <!-- DS loại xe -->
@@ -150,6 +162,12 @@
    <definition name="userinfo" extends="base.definition">  
        <put-attribute name="title" value="userinfo" />  
        <put-attribute name="body" value="/WEB-INF/bodyfragments/_userinfo.jsp" />  
+   </definition>
+   
+   <!-- Trang cá nhân người khác -->
+   <definition name="otheruserinfo" extends="base.definition">  
+       <put-attribute name="title" value="userinfo" />  
+       <put-attribute name="body" value="/WEB-INF/bodyfragments/_otheruserinfo.jsp" />  
    </definition>
    
          <!-- Chỉnh sửa thông tin cá nhân -->

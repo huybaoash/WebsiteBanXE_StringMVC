@@ -47,19 +47,19 @@
 		 <div id="menu">
 		    <ul class="menu-list" style = "display:flex;  list-style:none;">
 		        <li class="menu-item">
-		            <a href="${pageContext.request.contextPath}/contract-list-admin"")">Hợp đồng</a>
+		            <a href="${pageContext.request.contextPath}/contract-list-admin">Hợp đồng</a>
 		        </li>
 		
 		        <li class="menu-item">
-		            <a href="${pageContext.request.contextPath}/cartype-list-admin"")">Loại xe</a>
+		            <a href="${pageContext.request.contextPath}/cartype-list-admin">Loại xe</a>
 		        </li>
 		
 		        <li class="menu-item">
-		            <a href="${pageContext.request.contextPath}/carconmpany-list-admin"">Hãng sản xuất</a>
+		            <a href="${pageContext.request.contextPath}/carconmpany-list-admin">Hãng sản xuất</a>
 		        </li>
 		
 		        <li class="menu-item">
-		            <a href="${pageContext.request.contextPath}/account-list"">Người dùng</a>
+		            <a href="${pageContext.request.contextPath}/account-list">Người dùng</a>
 		        </li>
 		
 		        
@@ -74,29 +74,29 @@
 		</div>
 		
 		<table class="table">
-		    <tr>
-		        <th style="width:5%; text-align:left"> <label>Mã hợp đồng</label></th>
-		        <th style="width:10%; text-align:left"><label>Tên người bán</label></th>
-		        <th style="width:5%; text-align:left"><label>Mã xe</label></th>
-		        <th style="width:15%; text-align:left"><label>Tên xe</label></th>
-		        <th style="width:10%; text-align:left"><label>Ngày lập</label></th>
-		        <th style="width:10%; text-align:left"><label>Giá</label></th>
-		        <th style="width:10%; text-align:left"><label>Địa điểm</label></th>
-		        <th style="width:10%; text-align:left"><label>Trạng thái</label></th>
-		        <th></th>
+		    <tr style ="border:0.5px solid grey">
+		        <th style="width:10%; text-align:left;border:0.5px solid grey"> <label>Mã hợp đồng</label></th>
+		        <th style="width:15%; text-align:left;border:0.5px solid grey"><label>Tên người bán</label></th>
+		        <th style="width:5%; text-align:left;border:0.5px solid grey"><label>Mã xe</label></th>
+		        <th style="width:20%; text-align:left;border:0.5px solid grey"><label>Tên xe</label></th>
+		        <th style="width:15%; text-align:left;border:0.5px solid grey"><label>Ngày lập</label></th>
+		        <th style="width:10%; text-align:left;border:0.5px solid grey"><label>Giá</label></th>
+		        <th style="width:15%; text-align:left;border:0.5px solid grey"><label>Địa điểm</label></th>
+		        <th style="width:15%; text-align:left;border:0.5px solid grey"><label>Trạng thái</label></th>
+		        <th style="text-align:left;border:0.5px solid grey"><label>Tác vụ</label></th>
 		    </tr>
 			<c:forEach var = "hopdong"  items = "${lstHD}">
 		    
-		        <tr style="border:1px solid red">
-		            <td>${hopdong.getMAHD()}</td>
-		            <td><a href="">${hopdong.getTENTK()}</a></td>
-		            <td><a href="">${hopdong.getMAXE()}</a></td>
-		            <td>${hopdong.getTENXE()}</td>
-		            <td>${hopdong.getNGAYLAP()}</td>
-		            <td>${String.format("%,.0f",hopdong.getGIA())}</td>
-		            <td>${hopdong.getDIADIEM()}</td>
-		            <td>${hopdong.getTRANGTHAI()}</td>
-		            <td>
+		        <tr style ="border:0.5px solid grey">
+		            <td style ="border:0.5px solid grey">${hopdong.getMAHD()}</td>
+		            <td style ="border:0.5px solid grey"><a href="${pageContext.request.contextPath}/otheruserinfo?&MATK= ${hopdong.getMATK()}">${hopdong.getTENTK()}</a></td>
+		            <td style ="border:0.5px solid grey">${hopdong.getMAXE()}</td>
+		            <td style ="border:0.5px solid grey"><a href="">${hopdong.getTENXE()}</a></td>
+		            <td style ="border:0.5px solid grey">${hopdong.getNGAYLAP()}</td>
+		            <td style ="border:0.5px solid grey">${String.format("%,.0f",hopdong.getGIA())}</td>
+		            <td style ="border:0.5px solid grey">${hopdong.getDIADIEM()}</td>
+		            <td style ="border:0.5px solid grey">${hopdong.getTRANGTHAI()}</td>
+		            <td style ="border:0.5px solid grey">
 		            	<c:choose>
 								<c:when test="${hopdong.getTRANGTHAI() eq 'Công khai'}">
 									<a href="" class="btn btn-success btn-sm" onclick="lockTT()"><i class="fas fa-unlock-alt"></i> Khóa hợp đồng ?</a>

@@ -41,19 +41,19 @@
 		 <div id="menu">
 		    <ul class="menu-list" style = "display:flex;  list-style:none;">
 		        <li class="menu-item">
-		            <a href="${pageContext.request.contextPath}/contract-list-admin"")">Hợp đồng</a>
+		            <a href="${pageContext.request.contextPath}/contract-list-admin">Hợp đồng</a>
 		        </li>
 		
 		        <li class="menu-item">
-		            <a href="${pageContext.request.contextPath}/cartype-list-admin"")">Loại xe</a>
+		            <a href="${pageContext.request.contextPath}/cartype-list-admin">Loại xe</a>
 		        </li>
 		
 		        <li class="menu-item">
-		            <a href="${pageContext.request.contextPath}/carconmpany-list-admin"">Hãng sản xuất</a>
+		            <a href="${pageContext.request.contextPath}/carconmpany-list-admin">Hãng sản xuất</a>
 		        </li>
 		
 		        <li class="menu-item">
-		            <a href="${pageContext.request.contextPath}/account-list"">Người dùng</a>
+		            <a href="${pageContext.request.contextPath}/account-list">Người dùng</a>
 		        </li>
 		
 		        
@@ -66,6 +66,46 @@
 			        <button type="submit" class="btn btn-primary" style="padding:0px 30px"> <i class="fas fa-search"></i> </button>
 			    </p>
 		</div>
+		
+		<div style="margin:10px 0px;font-size:18px">
+		    <i class="fas fa-plus" style="color:blue"></i>  <a href="" ">Thêm loại xe</a>
+		</div>
+		
+		<table class="table">
+		    <tr style ="border:0.5px solid grey">
+		        <th style="width:30%; text-align:left;border:0.5px solid grey"> <label>Tên loại xe</label></th>
+		        <th style="width:20%; text-align:left;border:0.5px solid grey"><label>Trạng thái</label></th>
+		        <th style="text-align:left;border:0.5px solid grey"><label>Tác vụ</label></th>
+		    </tr>
+			<c:forEach var = "loaixe"  items = "${lstLoaiXE}">
+		    
+		        <tr style ="border:0.5px solid grey">
+		            <td style ="border:0.5px solid grey">${loaixe.getTENLOAIXE()}</td>
+		            <td style ="border:0.5px solid grey">${loaixe.getTRANGTHAI()}</td>
+		            <td style ="border:0.5px solid grey">
+		            	<a href ="" class="btn btn-warning btn-sm" >Sửa</a>
+		            	<a href="${pageContext.request.contextPath}/cartype-details?&MALOAIXE=${loaixe.getMALOAIXE()}"  class="btn btn-info btn-sm">Chi tiết</a>
+		            	<c:choose>
+								<c:when test="${loaixe.getTRANGTHAI() eq 'Công khai'}">
+									<a href="" class="btn btn-success btn-sm" onclick="lockTT()"><i class="fas fa-unlock-alt"></i> Ẩn</a>
+								</c:when>
+								<c:otherwise>
+									<c:choose>
+											<c:when test="${loaixe.getTRANGTHAI() eq 'Đã khóa'}">
+												<a href="" class="btn btn-success btn-sm" onclick="unblockTT()"><i class="fas fa-unlock-alt"></i> Công khai</a>
+											</c:when>
+											<c:otherwise>
+											</c:otherwise>
+									</c:choose>
+		            
+								</c:otherwise>
+						</c:choose>
+		            	
+		            </td>
+		        </tr>
+		    </c:forEach>
+		</table>
+		
 		</div>
 		
 	</c:when> 

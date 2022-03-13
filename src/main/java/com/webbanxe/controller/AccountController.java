@@ -14,6 +14,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.webbanxe.model.Account;
 import com.webbanxe.model.AccountsDAO;
@@ -27,6 +28,7 @@ public class AccountController {
 
 	@RequestMapping(value = { "/userinfo" }, method = RequestMethod.GET)
     public String userinfoPage(Model model,HttpServletRequest request) throws ClassNotFoundException, SQLException {
+		
 		HttpSession session = request.getSession();
 		Account Account_present = (Account) session.getAttribute("Account_present");
 	
@@ -46,6 +48,35 @@ public class AccountController {
 		return "userinfo";
 		
     }
+	
+	@RequestMapping(value = { "/otheruserinfo" }, method = RequestMethod.GET)
+    public String otheruserinfoPage(Model model,HttpServletRequest request, @RequestParam int MATK) throws ClassNotFoundException, SQLException {
+		
+		HttpSession session = request.getSession();
+		Account Account_present = (Account) session.getAttribute("Account_present");
+		AccountsDAO datAccountsDAO = new AccountsDAO();
+		Account account = datAccountsDAO.getAccount(MATK);
+		
+		CustomerDAO dataCustomerDAO = new CustomerDAO();
+
+		
+		Customer Customer_present = dataCustomerDAO.getCustomer(Account_present.getMAKH());
+		Customer customer = dataCustomerDAO.getCustomer(account.getMAKH());
+		if (Account_present == null) {
+			MyController myController = new MyController();
+			return myController.homePage(model);
+		}
+		
+		model.addAttribute("Account_present",Account_present);
+		model.addAttribute("Customer_present",Customer_present);
+		model.addAttribute("account",account);
+		model.addAttribute("customer",customer);
+		
+		return "otheruserinfo";
+		
+    }
+	
+	
 	
 	@RequestMapping(value = { "/account-list" }, method = RequestMethod.GET)
     public String accountlistPage(Model model,HttpServletRequest request) throws ClassNotFoundException, SQLException {

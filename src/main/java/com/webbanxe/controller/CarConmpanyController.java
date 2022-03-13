@@ -13,6 +13,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.webbanxe.model.Account;
 import com.webbanxe.model.AccountsDAO;
@@ -66,4 +67,29 @@ public class CarConmpanyController {
 
         return "carconmpanyregister";
     }
+	
+	@RequestMapping(value = { "/carconmany-details" }, method = RequestMethod.GET)
+    public String cartypedetails(Model model , HttpServletRequest request,@RequestParam int MAHSX) throws ClassNotFoundException, SQLException {
+		
+		HttpSession session = request.getSession();
+		Account Account_present = (Account) session.getAttribute("Account_present");
+
+		
+		if (Account_present == null) {
+			
+			
+			LoginController loginController = new LoginController();
+			return loginController.loginGETPage(model);
+		}
+		
+		CarConmpanyDAO data_HangXE = new CarConmpanyDAO();
+    	
+    	CarConmpany hsx = data_HangXE.getCarConmpany(MAHSX);
+    	model.addAttribute("hsx",hsx);
+    	
+    	model.addAttribute("Account_present",Account_present);
+    	
+        return "carconmpanydetails";
+    }
+
 }
