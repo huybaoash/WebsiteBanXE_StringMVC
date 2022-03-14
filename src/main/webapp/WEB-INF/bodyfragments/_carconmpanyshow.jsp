@@ -36,46 +36,7 @@
 <c:choose>
 	    
 	<c:when test="${Account_present.getCHUCVU() eq 'Người Quản Trị'}">
-	<div class="container tt">
-		 <h2>Chi Tiết</h2>
-
-		<div>
-		    <h4>Loại xe</h4>
-		    <hr />
-		    <dl class="dl-horizontal">
-		        <dt>
-		        	<label>Tên loại xe</label>
-		            
-		        </dt>
-		
-		        <dd>
-		            ${loaixe.getTENLOAIXE()}
-		        </dd>
-		        <hr />
-		        <dt>
-		            <label>Hình ảnh</label>
-		        </dt>
-		
-		        <dd>
-		            <img src ="${loaixe.getHINHANH()}" style="height: 240px;width:240px">
-		        </dd>
-		        <hr />
-		        <dt>
-		            <label>Trạng thái</label>
-		        </dt>
-		
-		        <dd>
-		            ${loaixe.getTRANGTHAI()}
-		        </dd>
-		        <hr />
-		    </dl>
-		</div>
-		<p>
-			<a href="/WebBanXE/cartype-edit?&amp;MALOAIXE=${loaixe.getMALOAIXE()}" class="btn btn-primary btn-xs">Sửa</a>
-		  	<a href="${pageContext.request.contextPath}/cartype-list-admin" class="btn btn-primary btn-xs"> Trở lại danh sách </a>   
-		</p>
-		
-	</div>
+		Show
 		
 	</c:when> 
 	<c:otherwise>   

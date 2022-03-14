@@ -87,12 +87,12 @@
 		            	<a href="${pageContext.request.contextPath}/cartype-details?&MALOAIXE=${loaixe.getMALOAIXE()}"  class="btn btn-info btn-sm">Chi tiết</a>
 		            	<c:choose>
 								<c:when test="${loaixe.getTRANGTHAI() eq 'Công khai'}">
-									<a href="" class="btn btn-success btn-sm" onclick="lockTT()"><i class="fas fa-unlock-alt"></i> Ẩn</a>
+									<a href="${pageContext.request.contextPath}/cartype-hide?&MALOAIXE=${loaixe.getMALOAIXE()}" class="btn btn-success btn-sm" onclick="lockTT()"><i class="fas fa-unlock-alt"></i> Ẩn</a>
 								</c:when>
 								<c:otherwise>
 									<c:choose>
-											<c:when test="${loaixe.getTRANGTHAI() eq 'Đã khóa'}">
-												<a href="" class="btn btn-success btn-sm" onclick="unblockTT()"><i class="fas fa-unlock-alt"></i> Công khai</a>
+											<c:when test="${loaixe.getTRANGTHAI() eq 'Ẩn'}">
+												<a href="${pageContext.request.contextPath}/cartype-show?&MALOAIXE=${loaixe.getMALOAIXE()}" class="btn btn-success btn-sm" onclick="unblockTT()"><i class="fas fa-unlock-alt"></i> Công khai</a>
 											</c:when>
 											<c:otherwise>
 											</c:otherwise>

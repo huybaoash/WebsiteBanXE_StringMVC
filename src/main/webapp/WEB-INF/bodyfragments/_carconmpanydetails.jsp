@@ -57,7 +57,8 @@
 		        </dt>
 		
 		        <dd>
-		            ${hsx.getHINHANH()}
+		        	<img src ="${hsx.getHINHANH()}" style="height: 240px;width:240px">
+		            
 		        </dd>
 		        <hr />
 		        <dt>
@@ -71,7 +72,7 @@
 		    </dl>
 		</div>
 		<p>
-			<a href=""> Sửa </a>
+			<a href="/WebBanXE/carconmany-edit?&amp;MAHSX=${hsx.getMAHSX()}" class="btn btn-primary btn-xs" >Sửa</a>
 		  	<a href="${pageContext.request.contextPath}/carconmpany-list-admin" class="btn btn-primary btn-xs"> Trở lại danh sách </a>   
 		</p>
 		

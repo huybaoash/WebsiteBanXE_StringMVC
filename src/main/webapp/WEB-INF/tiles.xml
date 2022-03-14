@@ -56,6 +56,18 @@
        <put-attribute name="body" value="/WEB-INF/bodyfragments/_carconmpanyedit.jsp" />  
    </definition>
    
+   <!-- Công khai hãng sx -->
+   <definition name="carconmpanyshow" extends="base.definition">  
+       <put-attribute name="title" value="carconmpanyshow" />  
+       <put-attribute name="body" value="/WEB-INF/bodyfragments/_carconmpanyshow.jsp" />  
+   </definition>
+   
+   <!-- Ẩn hãng sx -->
+   <definition name="carconmpanyhide" extends="base.definition">  
+       <put-attribute name="title" value="carconmpanyhide" />  
+       <put-attribute name="body" value="/WEB-INF/bodyfragments/_carconmpanyhide.jsp" />  
+   </definition>   
+   
    <!-- DS hãng sx -->
    <definition name="carconmpanylist" extends="base.definition">  
        <put-attribute name="title" value="carconmpanylist" />  
@@ -86,6 +98,17 @@
        <put-attribute name="body" value="/WEB-INF/bodyfragments/_cartypeedit.jsp" />  
    </definition>
    
+    <!-- Công khai thông tin loại xe -->
+   <definition name="cartypeshow" extends="base.definition">  
+       <put-attribute name="title" value="cartypeshow" />  
+       <put-attribute name="body" value="/WEB-INF/bodyfragments/_cartypeshow.jsp" />  
+   </definition>
+   
+    <!-- Ẩn thông tin loại xe -->
+   <definition name="cartypehide" extends="base.definition">  
+       <put-attribute name="title" value="cartypehide" />  
+       <put-attribute name="body" value="/WEB-INF/bodyfragments/_cartypehide.jsp" />  
+   </definition>
        <!-- Chi tiết loại xe -->
    <definition name="cartypedetails" extends="base.definition">  
        <put-attribute name="title" value="cartypedetails" />  

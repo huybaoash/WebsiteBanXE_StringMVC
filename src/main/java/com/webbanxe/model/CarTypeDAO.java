@@ -54,7 +54,7 @@ public ConnectionDB db;
 		carTypeList = this.toList();
 		carTypeList.add(carcomp);
 		
-		String sql = "INSERT INTO hangsanxuat (`TENLOAIXE`, `HINHANH`, `TRANGTHAI`) VALUES (?, ?, ?)";
+		String sql = "INSERT INTO loaixe (`TENLOAIXE`, `HINHANH`, `TRANGTHAI`) VALUES (?, ?, ?)";
 		PreparedStatement stmt = db.conn.prepareStatement(sql);
 
         stmt.setString(1, carcomp.getTENLOAIXE());

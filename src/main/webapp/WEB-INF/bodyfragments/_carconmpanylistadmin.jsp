@@ -86,12 +86,12 @@
 		            	<a href="${pageContext.request.contextPath}/carconmany-details?&MAHSX=${hangxe.getMAHSX()}" class="btn btn-info btn-sm">Chi tiết</a>
 		            	<c:choose>
 								<c:when test="${hangxe.getTRANGTHAI() eq 'Công khai'}">
-									<a href="" class="btn btn-success btn-sm" onclick="lockTT()"><i class="fas fa-unlock-alt"></i> Ẩn </a>
+									<a href="${pageContext.request.contextPath}/carconmany-hide?&MAHSX=${hangxe.getMAHSX()}" class="btn btn-success btn-sm" onclick="lockTT()"><i class="fas fa-unlock-alt"></i> Ẩn </a>
 								</c:when>
 								<c:otherwise>
 									<c:choose>
-											<c:when test="${hangxe.getTRANGTHAI() eq 'Đã khóa'}">
-												<a href="" class="btn btn-success btn-sm" onclick="unblockTT()"><i class="fas fa-unlock-alt"></i> Công khai</a>
+											<c:when test="${hangxe.getTRANGTHAI() eq 'Ẩn'}">
+												<a href="${pageContext.request.contextPath}/carconmany-show?&MAHSX=${hangxe.getMAHSX()}" class="btn btn-success btn-sm" onclick="unblockTT()"><i class="fas fa-unlock-alt"></i> Công khai</a>
 											</c:when>
 											<c:otherwise>
 											</c:otherwise>
