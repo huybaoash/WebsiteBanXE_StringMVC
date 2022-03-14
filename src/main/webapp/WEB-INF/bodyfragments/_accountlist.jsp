@@ -86,12 +86,12 @@
 		            <td style ="border:0.5px solid grey">
 		            	<c:choose>
 								<c:when test="${nguoidung.getTRANGTHAI() eq 'Đang hoạt động'}">
-									<a href="" class="btn btn-success btn-sm" onclick="lockTT()"><i class="fas fa-unlock-alt"></i> Khóa tài khoản ?</a>
+									<a href="${pageContext.request.contextPath}/account-lock?&MATK= ${nguoidung.getMATK()}" class="btn btn-success btn-sm" onclick="lockTT()"><i class="fas fa-unlock-alt"></i> Khóa tài khoản ?</a>
 								</c:when>
 								<c:otherwise>
 									<c:choose>
 											<c:when test="${nguoidung.getTRANGTHAI() eq 'Đã khóa'}">
-												<a href="" class="btn btn-success btn-sm" onclick="unblockTT()"><i class="fas fa-unlock-alt"></i> Mở khóa</a>
+												<a href="${pageContext.request.contextPath}/account-unlock?&MATK= ${nguoidung.getMATK()}" class="btn btn-success btn-sm" onclick="unblockTT()"><i class="fas fa-unlock-alt"></i> Mở khóa</a>
 											</c:when>
 											<c:otherwise>
 											</c:otherwise>

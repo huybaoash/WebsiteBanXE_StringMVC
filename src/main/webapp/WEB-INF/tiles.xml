@@ -205,4 +205,16 @@
        <put-attribute name="body" value="/WEB-INF/bodyfragments/_customerlist.jsp" />  
    </definition>
 
+            <!-- Khóa tài khoản -->
+   <definition name="accountlock" extends="base.definition">  
+       <put-attribute name="title" value="accountlock" />  
+       <put-attribute name="body" value="/WEB-INF/bodyfragments/_accountlock.jsp" />  
+   </definition>
+
+            <!-- Mở khóa tài khoản -->
+   <definition name="accountunlock" extends="base.definition">  
+       <put-attribute name="title" value="accountunlock" />  
+       <put-attribute name="body" value="/WEB-INF/bodyfragments/_accountunlock.jsp" />  
+   </definition>
+
 </tiles-definitions>

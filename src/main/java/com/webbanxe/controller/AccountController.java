@@ -76,7 +76,67 @@ public class AccountController {
 		
     }
 	
+	@RequestMapping(value = { "/account-lock" }, method = RequestMethod.GET)
+    public String accountlockPage(Model model,HttpServletRequest request,@RequestParam int MATK) throws ClassNotFoundException, SQLException {
+
+		HttpSession session = request.getSession();
+		Account Account_present = (Account) session.getAttribute("Account_present");
+
+		
+		if (Account_present == null) {
+			
+			
+			LoginController loginController = new LoginController();
+			return loginController.loginGETPage(model);
+		}
+		
+		AccountsDAO data_accAccountsDAO = new AccountsDAO();
+		Account account = data_accAccountsDAO.getAccount(MATK);
+		
+		account.setTRANGTHAI("Đã khóa");
+		data_accAccountsDAO.update(account);
+		
+		
+    	List<Account> lstAccounts = data_accAccountsDAO.toList();
+    	model.addAttribute("lstAccounts",lstAccounts);
+    	
+    	model.addAttribute("Account_present",Account_present);
+    	
+        
+		
+        return "accountlist";
+    }
 	
+	@RequestMapping(value = { "/account-unlock" }, method = RequestMethod.GET)
+    public String accountunlockPage(Model model,HttpServletRequest request,@RequestParam int MATK) throws ClassNotFoundException, SQLException {
+
+		HttpSession session = request.getSession();
+		Account Account_present = (Account) session.getAttribute("Account_present");
+
+		
+		if (Account_present == null) {
+			
+			
+			LoginController loginController = new LoginController();
+			return loginController.loginGETPage(model);
+		}
+		
+		AccountsDAO data_accAccountsDAO = new AccountsDAO();
+		Account account = data_accAccountsDAO.getAccount(MATK);
+		
+		account.setTRANGTHAI("Đang hoạt động");
+		data_accAccountsDAO.update(account);
+		
+		
+    	List<Account> lstAccounts = data_accAccountsDAO.toList();
+    	model.addAttribute("lstAccounts",lstAccounts);
+    	
+    	model.addAttribute("Account_present",Account_present);
+    	
+        
+		
+        return "accountlist";
+    }
 	
 	@RequestMapping(value = { "/account-list" }, method = RequestMethod.GET)
     public String accountlistPage(Model model,HttpServletRequest request) throws ClassNotFoundException, SQLException {
