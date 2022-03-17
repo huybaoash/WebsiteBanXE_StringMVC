@@ -59,6 +59,29 @@ public class ContractDAO {
         return contractList;
     }
 	
+	public List<Contract> toPublicList() throws SQLException, ClassNotFoundException {
+		this.ConnectionDB();
+        List<Contract> contractList = new ArrayList<>();
+        
+        
+        db.rs = db.stmt.executeQuery("SELECT * FROM `hopdong` WHERE `TRANGTHAI`= 'Công khai'");
+		while(db.rs.next()){
+            Contract contract = new Contract();
+            contract.setMAHD(db.rs.getInt("MAHD"));
+            contract.setMANGUOIBAN(db.rs.getInt("MANGUOIBAN"));
+            contract.setMANGUOIMUA(db.rs.getInt("MANGUOIMUA"));
+            contract.setMAXE(db.rs.getInt("MAXE"));
+            contract.setNOIDUNGHD(db.rs.getString("NOIDUNGHD"));
+            contract.setGIA(db.rs.getDouble("GIA"));
+            contract.setNGAYLAP(db.rs.getDate("NGAYLAP"));
+            contract.setTRANGTHAI(db.rs.getString("TRANGTHAI"));
+            contract.setDIADIEM(db.rs.getString("DIADIEM"));
+            contractList.add(contract);
+        }
+		db.rs.close();
+        return contractList;
+    }
+	
 	public List<Contract> add(Contract contract) throws SQLException, ClassNotFoundException{
 		this.ConnectionDB();
 		List<Contract> contractList = new ArrayList<>();

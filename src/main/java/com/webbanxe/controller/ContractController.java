@@ -22,7 +22,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 
 import com.webbanxe.model.Account;
-
+import com.webbanxe.model.AccountsDAO;
 import com.webbanxe.model.Car;
 import com.webbanxe.model.CarConmpany;
 import com.webbanxe.model.CarConmpanyDAO;
@@ -51,8 +51,31 @@ public class ContractController {
     }
 	
 	@RequestMapping(value = { "/contract-details" }, method = RequestMethod.GET)
-    public String contractdetailsPage(Model model,HttpServletRequest request) {
-
+    public String contractdetailsPage(Model model,HttpServletRequest request, @RequestParam int MAHD) throws ClassNotFoundException, SQLException {
+		
+		HttpSession session = request.getSession();
+		Account Account_present = (Account) session.getAttribute("Account_present");
+		
+		ContractCarDetailsViewDAO data_HD = new ContractCarDetailsViewDAO();
+    	ContractCarDetailsView hopdong = data_HD.getByMAHD(MAHD);
+    	
+    	AccountsDAO data_AccountsDAO = new AccountsDAO();
+    	Account Account_selling = data_AccountsDAO.getAccount(hopdong.getMATK());
+    	
+    	CustomerDAO data_CustomerDAO = new CustomerDAO();
+    	Customer Customer_selling = data_CustomerDAO.getCustomer(Account_selling.getMAKH());
+    	
+    	CarDAO data_CarDAO = new CarDAO();
+    	Car Car_selling = data_CarDAO.getCar(hopdong.getMAXE());
+    	String noidung = Car_selling.getNOIDUNGXE().replace("\n", "<br />");
+    	Car_selling.setNOIDUNGXE(noidung);
+    	model.addAttribute("Account_present",Account_present);
+    	model.addAttribute("Customer_selling",Customer_selling);
+    	
+    	model.addAttribute("Car_selling",Car_selling);
+    	
+		model.addAttribute("hopdong",hopdong);
+		
         return "contractdetails";
     }
 	

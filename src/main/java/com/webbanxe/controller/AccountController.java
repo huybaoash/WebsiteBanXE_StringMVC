@@ -32,15 +32,15 @@ public class AccountController {
 		HttpSession session = request.getSession();
 		Account Account_present = (Account) session.getAttribute("Account_present");
 	
-		CustomerDAO dataCustomerDAO = new CustomerDAO();
-
 		
-		Customer Customer_present = dataCustomerDAO.getCustomer(Account_present.getMAKH());
 		
 		if (Account_present == null) {
 			MyController myController = new MyController();
 			return myController.homePage(model);
 		}
+		
+		CustomerDAO dataCustomerDAO = new CustomerDAO();
+		Customer Customer_present = dataCustomerDAO.getCustomer(Account_present.getMAKH());
 		
 		model.addAttribute("Account_present",Account_present);
 		model.addAttribute("Customer_present",Customer_present);

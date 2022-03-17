@@ -33,7 +33,7 @@
         -moz-appearance: textfield;
     }
     span {
-        color: red;
+        
         padding: 0;
         float: none;
     }

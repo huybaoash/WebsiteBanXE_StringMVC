@@ -109,7 +109,7 @@
   			
   			<c:forEach var = "i" begin = "0" end = "${lstHD.size()-1}">
   			<div class="row">
-				
+				<a href = "${pageContext.request.contextPath}/contract-details?&MAHD=${lstHD.get(i).getMAHD()}">
                 <div class="panel panel-default" style="width: 900px" >
                     <div class="panel panel-heading">
                         ${lstHD.get(i).getTENXE()}
@@ -135,7 +135,7 @@
                     </div>
                     
                 </div>
-            
+            	</a>
             </div>
 			</c:forEach>
   			

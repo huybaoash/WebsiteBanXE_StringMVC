@@ -39,7 +39,7 @@
     <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand fas fa-hotel" style="font-weight:bold" href="${pageContext.request.contextPath}/">Trang chủ</a>
+      <a class="navbar-brand fas fa-hotel" style="font-weight:bold;padding-left:100px;" href="${pageContext.request.contextPath}/">Trang chủ</a>
     </div>
     <ul class="nav navbar-nav">
        		<li style="font-weight:bold"><a href="${pageContext.request.contextPath}/carconmpany-list">Hãng sản xuất</a></li>
@@ -58,8 +58,8 @@
     <c:when test="${Account_present == null}">
 	    
 	    <ul class="nav navbar-nav navbar-right">
-	      <li><a href="${pageContext.request.contextPath}/login"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-	      <li><a href="${pageContext.request.contextPath}/register"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+	      <li><a href="${pageContext.request.contextPath}/login"><span class="glyphicon glyphicon-user"></span> Đăng nhập</a></li>
+	      <li><a href="${pageContext.request.contextPath}/register"><span class="glyphicon glyphicon-log-in"></span> Đăng ký</a></li>
 	    </ul>
         
         

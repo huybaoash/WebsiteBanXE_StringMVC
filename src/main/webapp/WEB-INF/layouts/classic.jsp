@@ -339,10 +339,10 @@
 </head>
 
 <body>
-    <table width="100%">
+    <table width="100%" >
         <tr>
             <td colspan="2">
-                <tiles:insertAttribute name="header" />
+                <tiles:insertAttribute name="header"/>
             </td>
         </tr>
         <tr>
