@@ -199,7 +199,7 @@
                 	<p style= "display:inline;">
 	                    <h4 style="font-weight:bold; width:200px; display:inline;padding-right:400px"> Thông tin sản phẩm </h4>
                   			<button class ="btn btn-success" style = "padding-top:10px">
-                  				<i class="	fa fa-cart-plus"></i> ĐẶT MUA XE 
+                  				<i class="	fa fa-cart-plus"></i> THÊM VÀO GIỎ HỢP ĐỒNG
                   			</button>      
 	                
                     </p>

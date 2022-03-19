@@ -29,9 +29,10 @@ public class LoginController {
 	@RequestMapping(value = { "/login" }, method = RequestMethod.GET)
 	
     public String loginGETPage(Model model) throws ClassNotFoundException, SQLException {
+		 
 		
 		
-		if (Account_present != null) {
+		if (Account_present != null ) {
 			MyController myController = new MyController();
 			return myController.homePage(model);
 		}
@@ -58,9 +59,12 @@ public class LoginController {
 		for (Account account : lstAccount) {
 			if (account.getTENTK().equals(UserName)&& account.getMATKHAU().equals(Password)) {
 				Account_present = account;
-	
+				
+				
 				model.addAttribute("Account_present",account);
+				session.setMaxInactiveInterval(60*60); // Tăng thời gian tồn tại của Session
 				session.setAttribute("Account_present", account);
+				
 				MyController myController = new MyController();
 				return myController.homePage(model);
 				

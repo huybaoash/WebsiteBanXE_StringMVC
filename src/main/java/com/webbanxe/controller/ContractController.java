@@ -30,6 +30,8 @@ import com.webbanxe.model.CarDAO;
 import com.webbanxe.model.CarType;
 import com.webbanxe.model.CarTypeDAO;
 import com.webbanxe.model.Contract;
+import com.webbanxe.model.ContractCart;
+import com.webbanxe.model.ContractCartDAO;
 import com.webbanxe.model.ContractDAO;
 import com.webbanxe.model.Customer;
 import com.webbanxe.model.CustomerDAO;
@@ -464,5 +466,81 @@ public class ContractController {
     	model.addAttribute("Account_present",Account_present);
     	model.addAttribute("lstHD",lstHD);
         return "contractlistadmin";
+    }
+	
+	@RequestMapping(value = { "/contract-cart" }, method = RequestMethod.GET)
+    public String contractCartGET(Model model , HttpServletRequest request) throws ClassNotFoundException, SQLException {
+		
+		HttpSession session = request.getSession();
+		Account Account_present = (Account) session.getAttribute("Account_present");
+
+		
+		if (Account_present == null) {
+			
+			
+			LoginController loginController = new LoginController();
+			return loginController.loginGETPage(model);
+		}
+		
+		ContractCartDAO data_Cart = new ContractCartDAO();
+    	List<ContractCart> lstCart = data_Cart.toListByMATK(Account_present);
+    	
+    	ContractCarDetailsViewDAO data_ContractCarDetails = new ContractCarDetailsViewDAO();
+    	List<ContractCarDetailsView> lstHD_Temp = data_ContractCarDetails.toList();
+    	List<ContractCarDetailsView> lstHD = new ArrayList<>();
+    	
+    	Double sum = 0.0;
+    	
+    	for (ContractCarDetailsView hopdong : lstHD_Temp) {
+			for (ContractCart giohang : lstCart) {
+				if (giohang.getMAHD() == hopdong.getMAHD() && Account_present.getMATK() == giohang.getMATK()) { lstHD.add(hopdong);
+					sum += hopdong.getGIA(); 
+				}
+				
+			}
+		}
+    	
+    	model.addAttribute("Account_present",Account_present);
+    	model.addAttribute("lstHD",lstHD);
+    	model.addAttribute("sum",sum);
+        return "contractcart";
+    }
+	
+	@RequestMapping(value = { "/contract-cart" }, method = RequestMethod.POST)
+    public String contractCartPOST(Model model , HttpServletRequest request) throws ClassNotFoundException, SQLException {
+		
+		HttpSession session = request.getSession();
+		Account Account_present = (Account) session.getAttribute("Account_present");
+
+		
+		if (Account_present == null) {
+			
+			
+			LoginController loginController = new LoginController();
+			return loginController.loginGETPage(model);
+		}
+		
+		ContractCartDAO data_Cart = new ContractCartDAO();
+    	List<ContractCart> lstCart = data_Cart.toListByMATK(Account_present);
+    	
+    	ContractCarDetailsViewDAO data_ContractCarDetails = new ContractCarDetailsViewDAO();
+    	List<ContractCarDetailsView> lstHD_Temp = data_ContractCarDetails.toList();
+    	List<ContractCarDetailsView> lstHD = new ArrayList<>();
+    	
+    	Double sum = 0.0;
+    	
+    	for (ContractCarDetailsView hopdong : lstHD_Temp) {
+			for (ContractCart giohang : lstCart) {
+				if (giohang.getMAHD() == hopdong.getMAHD() && Account_present.getMATK() == giohang.getMATK()) { lstHD.add(hopdong);
+					sum += hopdong.getGIA(); 
+				}
+				
+			}
+		}
+    	
+    	model.addAttribute("Account_present",Account_present);
+    	model.addAttribute("lstHD",lstHD);
+    	model.addAttribute("sum",sum);
+        return "contractcart";
     }
 }

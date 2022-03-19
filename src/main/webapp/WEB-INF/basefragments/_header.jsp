@@ -142,6 +142,7 @@
         	
         	<ul class="nav navbar-nav navbar-right">
 		      <li><a href="${pageContext.request.contextPath}/userinfo"><span class="glyphicon glyphicon-user"></span> Xin chào ${Account_present.getTENTK()}</a></li>
+		      <li><a href="${pageContext.request.contextPath}/contract-cart?&MATK=${Account_present.getMATK()}"><span class="fa fa-cart-plus"></span> Hợp đồng</a></li>
 		       
 		      <c:choose>
 		    
