@@ -148,7 +148,7 @@
 
                             <div class="col-md-9">
                                 <label for=""DIADIEM"">Nơi bán</label>
-								<input type = "text" id = "DIADIEM" name ="DIADIEM" class = "form-control" placeholder = "Thành phố Hồ Chí Minh" required/>
+								<input type = "text" id = "DIADIEM" name ="DIADIEM" class = "form-control" placeholder = "Vd: Tp.HCM, Hà Nôi" required/>
                                
                             </div>
                         </div>

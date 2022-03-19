@@ -334,7 +334,134 @@
         /* asdasd */
         
         
+            /*Chat Box*/
+    {
+        box-sizing: border-box;
+    }
+    .boxDivBell {
+        height: auto;
+        border:1px solid #808080;
+        margin-bottom:5px;
         
+        border-radius:5px;
+    }
+        .boxDivBell:hover {
+            margin-top: 0 !important;
+        }
+        .boxDivBell p {
+            font-size:12px;
+            margin-bottom:0 !important;
+        }
+    /* Nút Để Mở Chatbox */
+    .nut-mo-chatbox {
+        color: white;
+        padding: 10px 0px;
+        border: none;
+        cursor: pointer;
+        
+        width: 50px;
+        border: 1px solid #ddd;
+        margin-left: 10px;
+      
+        border-radius: 100%;
+        background-color: black;
+    }
+        .nut-mo-chatbox:hover {
+            background-color: grey;
+        }
+    /* Ẩn chatbox mặc định */
+    .Chatbox {
+        display: none;
+      position: fixed;
+        top: 70px;
+        right: 250px;
+        z-index: 9;
+        width:300px;
+    }
+    /* Thêm style cho form */
+    #containermsg {
+        max-width: 300px;
+        padding: 10px;
+        background-color: white;
+        border-radius: 10px;
+        border: 1px solid #f1f1f1;
+        box-shadow: 0px 1px 10px 3px #a7a7a7;
+        position: relative;
+    }
+        /* thiết lập style textarea */
+        #containermsg textarea {
+            width: 100%;
+           padding: 10px;
+            margin: 5px 0 5px 0;
+            border: none;
+            background-color: #ddd;
+            resize: none;
+            min-height: 30px;
+            border-radius:5px;
+        }
+            /*thiết lập style cho textarea khi được focus */
+            #containermsg textarea:focus {
+                background-color: #ddd;
+                outline: none;
+            }
+        /* Thiết lập style cho nút trong form*/
+        #containermsg .btn {
+     
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            margin-bottom: 10px;
+            opacity: 0.8;
+        }
+        /* Thiết lập màu nền cho nút đóng chatbox */
+        #containermsg .nut-dong-chatbox {
+            background-color: white;
+            color:red;
+            width: 50px;
+            position:absolute;
+            top:0;
+            right:0;
+            padding: 0px !important;
+        }
+    .nut-dong-chatbox i{
+        font-size:40px;
+    }
+    /* Thêm hiệu ứng hover cho nút, HÔM BỮA M CHỈNH THIẾU NO ADSSSSSSS chổ nào có r mà*/
+    #containermsg .btn:hover, .nut-mo-chatbox:hover {
+        opacity: 1;
+    }
+    .fa-comment-dots{
+       font-size:20px;
+    }
+    #contentMsg li {
+        list-style-type: none;
+    }
+    #contentMsg {
+        height: 250px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        word-wrap: break-word;
+        overflow: auto;
+        background-color:#f0f0f0;
+        padding:10px;
+    }
+    h1 {
+        font-weight: bolder;
+        color:#ff7f24;
+    }
+    .fa-bell{
+        font-size:20px;
+        color:yellow;
+    }
+    .boxDivBell strong{
+        text-align:left;
+        font-size:14px;
+    }
+    .boxDivBell a{
+        text-decoration: none;
+    }
     </style>
 </head>
 
@@ -359,5 +486,7 @@
             </td>
         </tr>
     </table>
+    
+    
 </body>
 </html>

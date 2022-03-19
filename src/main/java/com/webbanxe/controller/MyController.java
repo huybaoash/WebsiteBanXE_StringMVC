@@ -23,11 +23,11 @@ public class MyController {
     @RequestMapping(value = { "/", "/home" }, method = RequestMethod.GET)
     public String homePage(Model model) throws ClassNotFoundException, SQLException {
     	CarTypeDAO data_LoaiXE = new CarTypeDAO();
-    	List<CarType> lstLoaiXE = data_LoaiXE.toList();
+    	List<CarType> lstLoaiXE = data_LoaiXE.toPublicList();
     	model.addAttribute("lstLoaiXE",lstLoaiXE);
     	
     	ContractCarDetailsViewDAO data_HD = new ContractCarDetailsViewDAO();
-    	List<ContractCarDetailsView> lstHD = data_HD.toList();
+    	List<ContractCarDetailsView> lstHD = data_HD.toPublicList();
     	
     	model.addAttribute("lstHD",lstHD);
     	

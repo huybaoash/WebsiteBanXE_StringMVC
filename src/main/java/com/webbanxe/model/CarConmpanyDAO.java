@@ -48,6 +48,25 @@ public class CarConmpanyDAO {
         return carConmpanyList;
     }
 	
+	public List<CarConmpany> toPublicList() throws SQLException, ClassNotFoundException {
+		this.ConnectionDB();
+        List<CarConmpany> carConmpanyList = new ArrayList<>();
+        
+        
+        db.rs = db.stmt.executeQuery("SELECT * FROM hangsanxuat WHERE `TRANGTHAI`= 'Công khai'");
+		while(db.rs.next()){
+            CarConmpany carcomp = new CarConmpany();
+            carcomp = new CarConmpany();
+			carcomp.setMAHSX(db.rs.getInt("MAHSX"));
+            carcomp.setTENHSX(db.rs.getString("TENHSX"));
+            carcomp.setHINHANH(db.rs.getString("HINHANH"));
+            carcomp.setTRANGTHAI(db.rs.getString("TRANGTHAI"));
+            carConmpanyList.add(carcomp);
+        }
+		db.rs.close();
+        return carConmpanyList;
+    }
+	
 	public List<CarConmpany> add(CarConmpany carcomp) throws SQLException, ClassNotFoundException{
 		this.ConnectionDB();
 		List<CarConmpany> carConmpanyList = new ArrayList<>();

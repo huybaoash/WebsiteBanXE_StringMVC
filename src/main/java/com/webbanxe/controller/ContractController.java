@@ -1,7 +1,7 @@
 package com.webbanxe.controller;
 
 import java.io.File;
-
+import java.nio.file.Files;
 import java.sql.SQLException;
 
 import java.util.ArrayList;
@@ -80,8 +80,187 @@ public class ContractController {
     }
 	
 	@RequestMapping(value = { "/contract-edit" }, method = RequestMethod.GET)
-    public String contracteditPage(Model model,HttpServletRequest request) {
-
+    public String contracteditGETPage(Model model,HttpServletRequest request,@RequestParam int MAHD) throws ClassNotFoundException, SQLException {
+		
+		
+		
+		HttpSession session = request.getSession();
+		Account Account_present = (Account) session.getAttribute("Account_present");
+		
+		if (Account_present == null ) {
+			
+			
+			LoginController loginController = new LoginController();
+			return loginController.loginGETPage(model);
+		}
+		
+		
+		
+		ContractCarDetailsViewDAO data_HD = new ContractCarDetailsViewDAO();
+    	ContractCarDetailsView hopdong = data_HD.getByMAHD(MAHD);
+    	
+    	if (Account_present.getMATK() != hopdong.getMATK()) {
+			
+			
+			MyController myController = new MyController();
+			return myController.homePage(model);
+		}
+    	
+    	if (hopdong.getTRANGTHAI().equals("Hoàn tất giao dịch")) {
+			
+			
+			MyController myController = new MyController();
+			return myController.homePage(model);
+		}
+    	
+    	AccountsDAO data_AccountsDAO = new AccountsDAO();
+    	Account Account_selling = data_AccountsDAO.getAccount(hopdong.getMATK());
+    	
+    	CustomerDAO data_CustomerDAO = new CustomerDAO();
+    	Customer Customer_selling = data_CustomerDAO.getCustomer(Account_selling.getMAKH());
+    	
+    	CarDAO data_CarDAO = new CarDAO();
+    	Car Car_selling = data_CarDAO.getCar(hopdong.getMAXE());
+    	
+    	CarTypeDAO dataCarTypeDAO = new CarTypeDAO();
+		List<CarType> lstCarType = dataCarTypeDAO.toList();
+		
+		CarConmpanyDAO dataCarConmpany = new CarConmpanyDAO();
+		List<CarConmpany> lstCarConmpany = dataCarConmpany.toList();
+		
+		ContractDAO dataContractDAO = new ContractDAO();
+		Contract hopdongtable = dataContractDAO.getContract(MAHD);
+    	
+    	model.addAttribute("Account_present",Account_present);
+    	model.addAttribute("Customer_present",Customer_selling);
+    	
+    	model.addAttribute("Car_selling",Car_selling);
+    	
+		model.addAttribute("hopdong",hopdong);
+		model.addAttribute("hopdongtable",hopdongtable);
+		
+		model.addAttribute("lstCarType",lstCarType);
+		model.addAttribute("lstCarConmpany",lstCarConmpany);
+		
+        return "contractedit";
+    }
+	
+	@RequestMapping(value = { "/contract-edit" }, method = RequestMethod.POST)
+    public String contracteditPOSTPage(Model model,HttpServletRequest request,@RequestParam("image1") MultipartFile file) throws Exception {
+		
+		String mAHD_String = request.getParameter("MAHD");
+    	int MAHD = Integer.valueOf(mAHD_String);
+		
+		HttpSession session = request.getSession();
+		Account Account_present = (Account) session.getAttribute("Account_present");
+		
+		if (Account_present == null ) {
+			
+			
+			LoginController loginController = new LoginController();
+			return loginController.loginGETPage(model);
+		}
+		
+		
+		
+		ContractCarDetailsViewDAO data_HD = new ContractCarDetailsViewDAO();
+    	ContractCarDetailsView hopdong = data_HD.getByMAHD(MAHD);
+    	
+    	if (Account_present.getMATK() != hopdong.getMATK()) {
+			
+			
+			MyController myController = new MyController();
+			return myController.homePage(model);
+		}
+    	
+    	if (hopdong.getTRANGTHAI().equals("Hoàn tất giao dịch")) {
+			
+			
+			MyController myController = new MyController();
+			return myController.homePage(model);
+		}
+    	
+    	AccountsDAO data_AccountsDAO = new AccountsDAO();
+    	Account Account_selling = data_AccountsDAO.getAccount(hopdong.getMATK());
+    	
+    	CustomerDAO data_CustomerDAO = new CustomerDAO();
+    	Customer Customer_selling = data_CustomerDAO.getCustomer(Account_selling.getMAKH());
+    	
+    	CarDAO data_CarDAO = new CarDAO();
+    	
+    	
+    	CarTypeDAO dataCarTypeDAO = new CarTypeDAO();
+		
+		
+		CarConmpanyDAO dataCarConmpany = new CarConmpanyDAO();
+		
+		
+		ContractDAO dataContractDAO = new ContractDAO();
+		
+		
+		CustomerDAO dataCustomerDAO = new CustomerDAO();
+		
+		
+		List<String> validation = new ArrayList<>();
+		
+		String TENXE = request.getParameter("TENXE");
+		int MALOAIXE = Integer.parseInt(request.getParameter("MALOAIXE"));
+		int MAHSX = Integer.parseInt(request.getParameter("MAHSX"));
+		String NOIDUNGXE = request.getParameter("NOIDUNGXE");
+		String NOIDUNGHD = request.getParameter("NOIDUNGHD");
+		
+		
+		
+		int BAOHANH = Integer.parseInt(request.getParameter("BAOHANH")) ;
+		int NAMSANXUAT = Integer.parseInt(request.getParameter("NAMSANXUAT"));
+		double GIAXE = Double.parseDouble(request.getParameter("GIAXE"));
+		String DIADIEM = request.getParameter("DIADIEM");
+		String TRANGTHAI = request.getParameter("TRANGTHAI");
+		
+		
+		
+		Car Car_selling = data_CarDAO.getCar(hopdong.getMAXE());
+		Car_selling.setBAOHANH(BAOHANH);
+		
+		Car_selling.setMAHSX(MAHSX);
+		Car_selling.setMALOAIXE(MALOAIXE);
+		Car_selling.setNAMSANXUAT(NAMSANXUAT);
+		Car_selling.setNOIDUNGXE(NOIDUNGXE);
+		Car_selling.setTENXE(TENXE);
+		
+		
+		
+		Contract hopdongtable = dataContractDAO.getContract(MAHD);
+		hopdongtable.setDIADIEM(DIADIEM);
+		hopdongtable.setGIA(GIAXE);
+		hopdongtable.setNOIDUNGHD(NOIDUNGHD);
+		hopdongtable.setTRANGTHAI(TRANGTHAI);
+		
+		if (!file.getOriginalFilename().isEmpty()) {
+    		String HINHANH = saveFile(file,hopdongtable, request);
+    		Car_selling.setHINHANH(HINHANH);
+    	}
+		
+		
+		data_CarDAO.update(Car_selling);
+		dataContractDAO.updateByOwner(hopdongtable);
+		
+		List<CarType> lstCarType = dataCarTypeDAO.toList();
+		List<CarConmpany> lstCarConmpany = dataCarConmpany.toList();
+		
+		Customer Customer_present = dataCustomerDAO.getCustomer(Account_present.getMAKH());
+		
+    	model.addAttribute("Account_present",Account_present);
+    	model.addAttribute("Customer_present",Customer_selling);
+    	
+    	model.addAttribute("Car_selling",Car_selling);
+    	
+		model.addAttribute("hopdong",hopdong);
+		model.addAttribute("hopdongtable",hopdongtable);
+		
+		model.addAttribute("lstCarType",lstCarType);
+		model.addAttribute("lstCarConmpany",lstCarConmpany);
+		
         return "contractedit";
     }
 	
@@ -134,11 +313,15 @@ public class ContractController {
 		String destination = "C:/Users/huyba/eclipse-workspace/WebBanXE/src/main/webapp/WEB-INF/images/car/hopdong"+ contract.getMAHD() + "/"  + multipartFile.getOriginalFilename();
 		
 	  
-	    File file = new File(destination); 
-	    if (!file.exists()) {
-	    	file.mkdirs();     
-	}
-	    multipartFile.transferTo(file);
+		File file_checkexist = new File(destination); 
+	    
+		if (file_checkexist.exists()) Files.deleteIfExists(file_checkexist.toPath());
+		    
+		File file = new File(destination); 
+		if (!file.exists()) {
+		    file.mkdirs();     
+		}
+		multipartFile.transferTo(file);
 	    
 	    return "images/car/hopdong" + contract.getMAHD() + "/"  + multipartFile.getOriginalFilename();
 	}
@@ -189,6 +372,8 @@ public class ContractController {
 			carregister.setNOIDUNGXE(NOIDUNGXE);
 			carregister.setTENXE(TENXE);
 			carregister.setTRANGTHAI("Công khai");
+			
+			
 			
 			CarDAO dataCarDAO = new CarDAO();
 			dataCarDAO.add(carregister);

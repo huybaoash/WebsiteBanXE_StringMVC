@@ -48,6 +48,25 @@ public ConnectionDB db;
         return carTypeList;
     }
 	
+	public List<CarType> toPublicList() throws SQLException, ClassNotFoundException {
+		this.ConnectionDB();
+        List<CarType> carTypeList = new ArrayList<>();
+        
+        
+        db.rs = db.stmt.executeQuery("SELECT * FROM loaixe WHERE `TRANGTHAI`= 'Công khai'");
+		while(db.rs.next()){
+            CarType carcomp = new CarType();
+            carcomp = new CarType();
+			carcomp.setMALOAIXE(db.rs.getInt("MALOAIXE"));
+            carcomp.setTENLOAIXE(db.rs.getString("TENLOAIXE"));
+            carcomp.setHINHANH(db.rs.getString("HINHANH"));
+            carcomp.setTRANGTHAI(db.rs.getString("TRANGTHAI"));
+            carTypeList.add(carcomp);
+        }
+		db.rs.close();
+        return carTypeList;
+    }
+	
 	public List<CarType> add(CarType carcomp) throws SQLException, ClassNotFoundException{
 		this.ConnectionDB();
 		List<CarType> carTypeList = new ArrayList<>();

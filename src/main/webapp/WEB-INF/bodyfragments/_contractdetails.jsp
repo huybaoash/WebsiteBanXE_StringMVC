@@ -151,13 +151,24 @@
 
                     <div class="col-addr" style="text-align:right">
                         <p class="Update">Ngày đăng: ${hopdong.getNGAYLAP()}</p>
-
-                                <a href="">Tin của bạn:</strong>[<i>Chỉnh sửa ngay</i>]</a>
+							<c:choose>
+         
+						         <c:when test = "${Account_present.getMATK() == hopdong.getMATK()}">
+						            <a href="">Tin của bạn:</strong>[<i>Chỉnh sửa ngay</i>]</a>
+						         </c:when>
+						         
+						         
+						         
+						         <c:otherwise>
+						            
+					         	</c:otherwise>
+					      </c:choose>
+                                
 
                     </div>
                 </div>
 
-                <h1>Tiêu đề</h1>
+                <h1>${hopdong.getTENXE()}</h1>
                 <div class="row-inf">
                     <div class="col-addr">
                         <div class="infor" style="display:flex;">
@@ -198,6 +209,11 @@
                         	<p style="font-size:16px">Giá: <strong style="color:orangered"> ${String.format("%,.0f",hopdong.getGIA())} đ </strong> </p>
                         </div>
                         
+                        <div style="padding-left: 10px; line-height: 0.8rem;padding-top:10px;">
+	                        <p style="font-size:16px">Năm sản xuất: ${hopdong.getNAMSANXUAT()}</p>
+	
+	                    </div> 
+	                                           
                         <div style="padding-left: 10px; line-height: 0.8rem;padding-top:10px;">
 	                        <p style="font-size:16px">Bảo hành: ${hopdong.getBAOHANH()} tháng </p>
 	
