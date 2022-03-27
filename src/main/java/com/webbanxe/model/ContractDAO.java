@@ -207,4 +207,45 @@ public class ContractDAO {
 		}
 		return contractList;
 	}
+	
+	public List<Contract> updateStatus (Contract contract) throws SQLException, ClassNotFoundException{
+		this.ConnectionDB();
+		List<Contract> contractList = new ArrayList<>();
+		contractList = this.toList();
+		for (int i=0; i< contractList.size();i++) {
+			if (contractList.get(i).getMAXE() == contract.getMAXE())
+				{
+					contractList.get(i).setMANGUOIBAN(contract.getMANGUOIBAN());
+					contractList.get(i).setMANGUOIMUA(contract.getMANGUOIMUA());
+					contractList.get(i).setMAXE(contract.getMAXE());
+					contractList.get(i).setNOIDUNGHD(contract.getNOIDUNGHD());
+					contractList.get(i).setGIA(contract.getGIA());
+					contractList.get(i).setTRANGTHAI(contract.getTRANGTHAI());
+					contractList.get(i).setDIADIEM(contract.getDIADIEM());
+					contractList.get(i).setNGAYLAP(contract.getNGAYLAP());
+
+					
+					
+					String sql = "UPDATE `hopdong` SET `TRANGTHAI` = ? WHERE `hopdong`.`MAHD` = ?";
+					PreparedStatement stmt = db.conn.prepareStatement(sql);
+		
+			   
+
+			        
+	
+			        stmt.setString(1, contract.getTRANGTHAI());
+			        
+			        stmt.setInt(2, contract.getMAHD());
+			        
+			        
+			        stmt.execute();
+			        System.out.println("Sửa thành công");
+			        stmt.close();
+			        db.rs.close();
+					return contractList;
+				}
+			
+		}
+		return contractList;
+	}
 }

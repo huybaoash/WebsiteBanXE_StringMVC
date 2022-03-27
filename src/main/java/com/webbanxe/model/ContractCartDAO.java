@@ -97,7 +97,7 @@ public ConnectionDB db;
 	 * return ContractCartList; }
 	 */
 	
-	public List<ContractCart> removeById(ContractCart contractcart) throws SQLException, ClassNotFoundException{
+	public List<ContractCart> removeByMAHD(ContractCart contractcart) throws SQLException, ClassNotFoundException{
 		this.ConnectionDB();
 		List<ContractCart> ContractCartList = new ArrayList<>();
 		ContractCartList = this.toList();
@@ -110,7 +110,7 @@ public ConnectionDB db;
 			
 		}
 		
-		String sql = "DELETE FROM `giohopdong` WHERE `giohopdong`.`Id` =" + contractcart.getId();
+		String sql = "DELETE FROM `giohopdong` WHERE `giohopdong`.`MAHD` =" + contractcart.getMAHD() + " AND `giohopdong`.`MATK` =" + contractcart.getMATK();
 		PreparedStatement stmt = db.conn.prepareStatement(sql);
 
         

@@ -130,7 +130,16 @@
                         <p>
                             <strong>Giá hợp đồng: </strong>${String.format("%,.0f",lstHD.get(i).getGIA())}
                         </p>
-                    </div>    
+                    </div> 
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                            <br/>
+                            
+                                
+                                <a href="${pageContext.request.contextPath}/contract-cart-add?&MAHD=${lstHD.get(i).getMAHD()}" class="btn btn-warning" name = "btn_addtocart" type="submit"><i class="fa fa-shopping-cart" style="font-size:24px;"></i> Thêm vào giỏ hợp đồng</a>
+
+                           
+                            <br/>
+                        </div>    
                         
                     </div>
                     

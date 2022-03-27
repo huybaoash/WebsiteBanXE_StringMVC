@@ -506,6 +506,62 @@ public class ContractController {
         return "contractcart";
     }
 	
+	@RequestMapping(value = { "/contrac-list-show" }, method = RequestMethod.GET)
+    public String contractshowPage(Model model, HttpServletRequest request,@RequestParam int MAHD) throws ClassNotFoundException, SQLException {
+		
+		HttpSession session = request.getSession();
+		Account Account_present = (Account) session.getAttribute("Account_present");
+
+		
+		if (Account_present == null) {
+			
+			
+			LoginController loginController = new LoginController();
+			return loginController.loginGETPage(model);
+		}
+		
+		ContractDAO data_ContractDAO = new ContractDAO();
+    	
+    	Contract hopdong = data_ContractDAO.getContract(MAHD);
+    	hopdong.setTRANGTHAI("Công khai");
+    	data_ContractDAO.updateStatus(hopdong);
+    	
+    	ContractCarDetailsViewDAO data_HDDAO = new ContractCarDetailsViewDAO();
+    	List<ContractCarDetailsView> lstHD = data_HDDAO.toList();
+		model.addAttribute("lstHD",lstHD);
+    	
+    	model.addAttribute("Account_present",Account_present);
+    	return "contractlistadmin";
+    }
+	
+	@RequestMapping(value = { "/contrac-list-hide" }, method = RequestMethod.GET)
+    public String contracthidePage(Model model, HttpServletRequest request,@RequestParam int MAHD) throws ClassNotFoundException, SQLException {
+		
+		HttpSession session = request.getSession();
+		Account Account_present = (Account) session.getAttribute("Account_present");
+
+		
+		if (Account_present == null) {
+			
+			
+			LoginController loginController = new LoginController();
+			return loginController.loginGETPage(model);
+		}
+		
+		ContractDAO data_ContractDAO = new ContractDAO();
+    	
+    	Contract hopdong = data_ContractDAO.getContract(MAHD);
+    	hopdong.setTRANGTHAI("Đã khóa");
+    	data_ContractDAO.updateStatus(hopdong);
+    	
+    	ContractCarDetailsViewDAO data_HDDAO = new ContractCarDetailsViewDAO();
+    	List<ContractCarDetailsView> lstHD = data_HDDAO.toList();
+		model.addAttribute("lstHD",lstHD);
+    	
+    	model.addAttribute("Account_present",Account_present);
+    	return "contractlistadmin";
+    }
+	
 	@RequestMapping(value = { "/contract-cart" }, method = RequestMethod.POST)
     public String contractCartPOST(Model model , HttpServletRequest request) throws ClassNotFoundException, SQLException {
 		
@@ -542,5 +598,79 @@ public class ContractController {
     	model.addAttribute("lstHD",lstHD);
     	model.addAttribute("sum",sum);
         return "contractcart";
+    }
+	
+	@RequestMapping(value = { "/contract-cart-add" }, method = RequestMethod.GET)
+    public String contractCartADD(Model model , HttpServletRequest request,@RequestParam int MAHD) throws ClassNotFoundException, SQLException {
+		
+		HttpSession session = request.getSession();
+		Account Account_present = (Account) session.getAttribute("Account_present");
+
+		
+		if (Account_present == null) {
+			
+			
+			LoginController loginController = new LoginController();
+			return loginController.loginGETPage(model);
+		}
+		
+		ContractCartDAO data_Cart = new ContractCartDAO();
+    	ContractCart hopdongCart = new ContractCart(-1,MAHD,Account_present.getMATK());
+    	List<ContractCart> lstCarts = data_Cart.toListByMATK(Account_present);
+    	
+    	ContractDAO data_ContractDAO = new ContractDAO();
+    	Contract hopdong = data_ContractDAO.getContract(MAHD);
+    	
+    	if (!(hopdong.getTRANGTHAI().equals("Công khai")))
+    	{
+    		MyController myController = new MyController();
+			return myController.homePage(model);
+    	}
+    	
+    	if (hopdong.getMANGUOIBAN() == Account_present.getMATK()) {
+    		MyController myController = new MyController();
+			return myController.homePage(model);
+    	}
+    	
+    	int dem=0;
+    	
+    	for (ContractCart itemCarts : lstCarts) {
+			if (itemCarts.getMAHD() == MAHD && itemCarts.getMATK() == Account_present.getMATK() ) {
+				dem++;
+			}
+			
+		}
+    	
+    	if (dem >= 1) {
+    		MyController myController = new MyController();
+    		return myController.homePage(model);
+    	}
+    	
+    	else {
+    		data_Cart.add(hopdongCart);
+    	}
+    	MyController myController = new MyController();
+		return myController.homePage(model);
+    }
+	
+	@RequestMapping(value = { "/contract-cart-cancel" }, method = RequestMethod.GET)
+    public String contractCartCancel(Model model , HttpServletRequest request,@RequestParam int MAHD) throws ClassNotFoundException, SQLException {
+		
+		HttpSession session = request.getSession();
+		Account Account_present = (Account) session.getAttribute("Account_present");
+
+		
+		if (Account_present == null) {
+			
+			
+			LoginController loginController = new LoginController();
+			return loginController.loginGETPage(model);
+		}
+		
+		ContractCartDAO data_Cart = new ContractCartDAO();
+    	ContractCart hopdongCart = new ContractCart(-1,MAHD,Account_present.getMATK());
+    	
+    	data_Cart.removeByMAHD(hopdongCart);
+		return this.contractCartGET(model, request);
     }
 }

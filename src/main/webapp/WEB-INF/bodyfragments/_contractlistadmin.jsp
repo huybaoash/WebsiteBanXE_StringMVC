@@ -99,12 +99,12 @@
 		            <td style ="border:0.5px solid grey">
 		            	<c:choose>
 								<c:when test="${hopdong.getTRANGTHAI() eq 'Công khai'}">
-									<a href="" class="btn btn-success btn-sm" onclick="lockTT()"><i class="fas fa-unlock-alt"></i> Khóa hợp đồng ?</a>
+									<a href="${pageContext.request.contextPath}/contrac-list-hide?&MAHD=${hopdong.getMAHD()}" class="btn btn-success btn-sm" onclick="lockTT()"><i class="fas fa-unlock-alt"></i> Khóa hợp đồng ?</a>
 								</c:when>
 								<c:otherwise>
 									<c:choose>
 											<c:when test="${hopdong.getTRANGTHAI() eq 'Đã khóa'}">
-												<a href="" class="btn btn-success btn-sm" onclick="unblockTT()"><i class="fas fa-unlock-alt"></i> Mở khóa</a>
+												<a href="${pageContext.request.contextPath}/contrac-list-show?&MAHD=${hopdong.getMAHD()}" class="btn btn-success btn-sm" onclick="unblockTT()"><i class="fas fa-unlock-alt"></i> Mở khóa</a>
 											</c:when>
 											<c:otherwise>
 												<a class="btn btn-success btn-sm" > Đã hoàn tất giao dịch</a>

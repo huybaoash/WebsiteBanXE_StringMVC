@@ -61,9 +61,12 @@ public class LoginController {
 				Account_present = account;
 				
 				
+				
 				model.addAttribute("Account_present",account);
 				session.setMaxInactiveInterval(60*60); // Tăng thời gian tồn tại của Session
 				session.setAttribute("Account_present", account);
+				
+				
 				
 				MyController myController = new MyController();
 				return myController.homePage(model);

@@ -48,8 +48,8 @@
 		        <th style="width:20%; text-align:left;border:0.5px solid grey"><label>Tên xe</label></th>
 		        <th style="width:15%; text-align:left;border:0.5px solid grey"><label></label>Hình ảnh</th>
 		        <th style="width:15%; text-align:left;border:0.5px solid grey"><label>Ngày lập</label></th>
-		        <th style="width:10%; text-align:left;border:0.5px solid grey"><label>Giá</label></th>
-		        <th style="width:15%; text-align:left;border:0.5px solid grey"><label>Địa điểm</label></th>
+		        <th style="width:10%; text-align:left;border:0.5px solid grey"><label>Địa điểm</label></th>
+		        <th style="width:15%; text-align:left;border:0.5px solid grey"><label>Giá</label></th>
 		        <th style="text-align:left;border:0.5px solid grey"><label>Tác vụ</label></th>
 		    </tr>
 			<c:forEach var = "hopdong"  items = "${lstHD}">
@@ -63,7 +63,7 @@
 		            <td style ="border:0.5px solid grey">${hopdong.getNGAYLAP()}</td>
 		            <td style ="border:0.5px solid grey">${hopdong.getDIADIEM()}</td>
 		            <td style ="border:0.5px solid grey">${String.format("%,.0f",hopdong.getGIA())}</td>
-		            <td style ="border:0.5px solid grey"><a href = "">Hủy</a></td>
+		            <td style ="border:0.5px solid grey"><a href = "${pageContext.request.contextPath}/contract-cart-cancel?&MAHD=${hopdong.getMAHD()}">Hủy</a></td>
 		            
 		        </tr>
 		        

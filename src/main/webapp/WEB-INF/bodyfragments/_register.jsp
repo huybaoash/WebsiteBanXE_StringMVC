@@ -108,7 +108,7 @@
     <div class="form-group">
         <div class="col-md-10">
             <label for="PhoneNumber">Số điện thoại (*)</label>
-            <input for="PhoneNumber"  id = "PhoneNumber" name ="PhoneNumber" class = "form-control" Type = "number" placeholder = "SDT có 10 số..." max = "999999999" value ="${customer.getCMND()}" /> 
+            <input for="PhoneNumber"  id = "PhoneNumber" name ="PhoneNumber" class = "form-control" Type = "number" placeholder = "SDT có 10 số..." max = "999999999" value ="${customer.getSDT()}" /> 
             
         </div>
     </div>
