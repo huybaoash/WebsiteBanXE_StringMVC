@@ -29,7 +29,10 @@ public class MyController {
     	ContractCarDetailsViewDAO data_HD = new ContractCarDetailsViewDAO();
     	List<ContractCarDetailsView> lstHD = data_HD.toPublicList();
     	
+    	List<ContractCarDetailsView> lstHD_top4_news = data_HD.toPublicList_top4_otherbyDate();
+    	
     	model.addAttribute("lstHD",lstHD);
+    	model.addAttribute("lstHD_top4_news",lstHD_top4_news);
     	
         return "homePage";
     }

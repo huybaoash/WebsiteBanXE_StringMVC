@@ -57,48 +57,47 @@
     
     <div class="row" id="RowTT">
     <h3>DÒNG XE MỚI NHẤT</h3>
-   
-        <a href="">
-            <div class="col-lg-3 col-md-6 col-sm-6" style = "padding-right: 0px;padding-left: 0px;">
-                <div class="boxDiv">
-                    <div class="warp-layout_item">
-                        <p>HYUNDAI TUCSON NEW 2022 KM KHỦNG</p>
-
-                        <div class="card" style="">
-
-            
-                            <img src="zzz" alt="" style="position:relative" />
-                            <img src="~/images/unnamed.gif" style="position:absolute; top:1px; right:1px; height:40px; width:40px">
-                          
-                            <div class="card-body">
-                                <label class="card-text">2022 - Mới - Bảo hành 36 tháng</label>
-                            </div>
-
-                            <div class="form-group" style="display:inline-flex;    margin-bottom: 5px;">
-                             
-                                    <p class="Coins-index" style="margin-right:20px; margin-left:10px"><i class="fas fa-coins"></i> 100.000.000đ</p>
-                                
-								
-                                
-                                
-                            </div>
-                            <div class="form-group" style="display:inline-flex;    margin-bottom: 0px;;    margin-top: 20px;">
-                             
-                                 <p class="" style="margin-right:10px; margin-left:0px"><i class="far fa-clock"></i> Honda - Thành phố Hồ Chí Minh</p>
-								
-                                
-                                
-                            </div>
-                            
-                        </div>
-
-
-
-                    </div>
-                </div>
-            </div>
-        </a>
-
+   		<c:forEach var = "hopdong"  items = "${lstHD_top4_news}">
+	        <a href="${pageContext.request.contextPath}/contract-details?&MAHD=${hopdong.getMAHD()}">
+	            <div class="col-lg-3 col-md-6 col-sm-6" style = "padding-right: 0px;padding-left: 0px;">
+	                <div class="boxDiv" style = "height: auto;">
+	                    <div class="warp-layout_item">
+	                        <p style="height: 30px;">${hopdong.getTENXE()}</p>
+	
+	                        <div class="card" style="">
+	
+	            
+	                            <img src="${hopdong.getHINHANH()}" alt="" style="position:relative" />
+	                            
+	                            <div class="card-body">
+	                                <label class="card-text">${hopdong.getNAMSANXUAT()} - Bảo hành ${hopdong.getBAOHANH()} tháng</label>
+	                            </div>
+	
+	                            <div class="form-group" style="display:inline-flex;    margin-bottom: 5px;">
+	                             
+	                                    <p class="Coins-index" style="margin-right:20px; margin-left:10px"><i class="fas fa-coins"></i> ${String.format("%,.0f",hopdong.getGIA())}đ</p>
+	                                
+									
+	                                
+	                                
+	                            </div>
+	                            <div class="form-group" style="display:inline-flex;    margin-bottom: 0px;;    margin-top: 20px; ">
+	                             
+	                                 <p class="" style="margin-right:10px; margin-left:0px;height: 50px;">${hopdong.getTENHSX()} - ${hopdong.getTENLOAIXE()} - ${hopdong.getDIADIEM()}</p>
+									
+	                                
+	                                
+	                            </div>
+	                            
+	                        </div>
+	
+	
+	
+	                    </div>
+	                </div>
+	            </div>
+	        </a>
+		</c:forEach>
 
 	</div>
 	<div class="btn_more"></div>

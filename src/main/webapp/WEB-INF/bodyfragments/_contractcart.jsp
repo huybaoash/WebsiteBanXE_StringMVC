@@ -85,7 +85,7 @@
 		  
 		        
 		</table>
-		<button class ="btn btn-success" style = "margin-left:86%;">Thanh Toán</button>
+		<a href = "${pageContext.request.contextPath}/contract-cart-done" class ="btn btn-success" style = "margin-left:86%;">Thanh Toán</a>
 		</div>
 		
 	</c:when> 

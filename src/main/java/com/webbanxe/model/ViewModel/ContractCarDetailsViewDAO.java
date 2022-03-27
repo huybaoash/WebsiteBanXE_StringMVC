@@ -150,6 +150,40 @@ public ConnectionDB db;
         return ContractCarDetailsViewList;
     }
 	
+	public List<ContractCarDetailsView> toPublicList_top4_otherbyDate() throws SQLException, ClassNotFoundException {
+		this.ConnectionDB();
+        List<ContractCarDetailsView> ContractCarDetailsViewList = new ArrayList<>();
+        
+        
+        db.rs = db.stmt.executeQuery("SELECT * FROM hopdong_xe WHERE `TRANGTHAI`= 'Công khai' ORDER BY MAHD desc LIMIT 4");
+		while(db.rs.next()){
+			ContractCarDetailsView ContractCarDetailsView = new ContractCarDetailsView();
+			ContractCarDetailsView.setMAHD(db.rs.getInt("MAHD"));
+            ContractCarDetailsView.setMATK(db.rs.getInt("MATK"));
+            ContractCarDetailsView.setMAXE(db.rs.getInt("MAXE"));
+            ContractCarDetailsView.setMALOAIXE(db.rs.getInt("MALOAIXE"));
+            ContractCarDetailsView.setMAHSX(db.rs.getInt("MAHSX"));
+            ContractCarDetailsView.setBAOHANH(db.rs.getInt("BAOHANH"));
+            ContractCarDetailsView.setNAMSANXUAT(db.rs.getInt("NAMSANXUAT"));
+            
+            ContractCarDetailsView.setGIA(db.rs.getDouble("GIA"));
+            ContractCarDetailsView.setNGAYLAP(db.rs.getDate("NGAYLAP"));
+            
+
+            ContractCarDetailsView.setTENTK(db.rs.getString("TENTK"));
+            ContractCarDetailsView.setHINHANH(db.rs.getString("HINHANH"));
+            ContractCarDetailsView.setTENXE(db.rs.getString("TENXE"));
+            ContractCarDetailsView.setTENLOAIXE(db.rs.getString("TENLOAIXE")); 
+            ContractCarDetailsView.setTENHSX(db.rs.getString("TENHSX"));
+            ContractCarDetailsView.setTRANGTHAI(db.rs.getString("TRANGTHAI"));
+            ContractCarDetailsView.setDIADIEM(db.rs.getString("DIADIEM"));
+            
+            ContractCarDetailsViewList.add(ContractCarDetailsView);
+        }
+		db.rs.close();
+        return ContractCarDetailsViewList;
+    }
+	
 	public List<ContractCarDetailsView> toListByMATK(int MATK) throws SQLException, ClassNotFoundException {
 		this.ConnectionDB();
         List<ContractCarDetailsView> ContractCarDetailsViewList = new ArrayList<>();

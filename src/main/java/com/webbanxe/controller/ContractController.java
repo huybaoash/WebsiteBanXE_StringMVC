@@ -292,10 +292,10 @@ public class ContractController {
 			Customer Customer_present = dataCustomerDAO.getCustomer(Account_present.getMAKH());
 			
 			CarTypeDAO dataCarTypeDAO = new CarTypeDAO();
-			List<CarType> lstCarType = dataCarTypeDAO.toList();
+			List<CarType> lstCarType = dataCarTypeDAO.toPublicList();
 			
 			CarConmpanyDAO dataCarConmpany = new CarConmpanyDAO();
-			List<CarConmpany> lstCarConmpany = dataCarConmpany.toList();
+			List<CarConmpany> lstCarConmpany = dataCarConmpany.toPublicList();
 			
 			model.addAttribute("Account_present",Account_present);
 			model.addAttribute("Customer_present",Customer_present);
@@ -421,9 +421,11 @@ public class ContractController {
 			model.addAttribute("lstCarType",lstCarType);
 			model.addAttribute("lstCarConmpany",lstCarConmpany);
 
+			MyController myController = new MyController();
 			
-	        return "contractregister";
+			return myController.homePage(model);
 		}
+		
 		
         
     }
@@ -671,6 +673,53 @@ public class ContractController {
     	ContractCart hopdongCart = new ContractCart(-1,MAHD,Account_present.getMATK());
     	
     	data_Cart.removeByMAHD(hopdongCart);
+		return this.contractCartGET(model, request);
+    }
+	
+	@RequestMapping(value = { "/contract-cart-done" }, method = RequestMethod.GET)
+    public String contractdone(Model model , HttpServletRequest request) throws ClassNotFoundException, SQLException {
+		
+		HttpSession session = request.getSession();
+		Account Account_present = (Account) session.getAttribute("Account_present");
+
+		
+		if (Account_present == null) {
+			
+			
+			LoginController loginController = new LoginController();
+			return loginController.loginGETPage(model);
+		}
+		
+		ContractCartDAO data_Cart = new ContractCartDAO();
+    	List<ContractCart> lstCart = data_Cart.toListByMATK(Account_present);
+    	
+    	ContractCarDetailsViewDAO data_ContractCarDetails = new ContractCarDetailsViewDAO();
+    	List<ContractCarDetailsView> lstHD_Temp = data_ContractCarDetails.toList();
+    	List<ContractCarDetailsView> lstHD = new ArrayList<>();
+    	
+    	
+    	
+    	for (ContractCarDetailsView hopdong : lstHD_Temp) {
+			for (ContractCart giohang : lstCart) {
+				if (giohang.getMAHD() == hopdong.getMAHD() && Account_present.getMATK() == giohang.getMATK()) { 
+					ContractDAO data_ContractDAO = new ContractDAO();
+					Contract hopdongthanhtoan = data_ContractDAO.getContract(hopdong.getMAHD());
+					hopdongthanhtoan.setTRANGTHAI("Hoàn tất giao dịch");
+					hopdongthanhtoan.setMANGUOIMUA(Account_present.getMATK());
+					
+					data_ContractDAO.updateBuyer(hopdongthanhtoan);
+					
+					ContractCartDAO data_Cartt = new ContractCartDAO();
+			    	ContractCart hopdongCart = new ContractCart(-1,hopdongthanhtoan.getMAHD(),Account_present.getMATK());
+			    	
+			    	data_Cartt.removeByMAHD(hopdongCart);
+				}
+				
+			}
+		}
+    	
+    	
+    	
 		return this.contractCartGET(model, request);
     }
 }
